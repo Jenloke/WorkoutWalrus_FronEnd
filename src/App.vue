@@ -54,11 +54,15 @@ const currentView = computed(() => {
 </script>
 
 <template>
-  <h1>
-    Workout Walrus
-  </h1>
-
-  <ul>
+  <div id="top-bar">
+    <img src="./assets/vue.svg" alt="Image" srcset=""/>
+    <h1>
+      Workout Walrus
+    </h1>
+    <img id="settings" src="./assets/vue.svg" alt="Image" srcset=""/>
+  </div>
+  
+  <ul id="bottom-bar">
     <li>
       <a href="#/calculator">Calculator</a>
     </li>
@@ -72,4 +76,17 @@ const currentView = computed(() => {
   <!-- <a href="#/non-existent-path">Broken Link</a> -->
   <component :is="currentView" />
 </template>
+
+<style>
+  #top-bar {
+    display: flex;
+    flex-direction: row;
+  }
+
+  #bottom-bar { 
+    display: flex;
+    flex-direction: row;
+    justify-content:space-evenly;
+  }
+</style>
 
