@@ -54,6 +54,10 @@ const currentView = computed(() => {
 </script>
 
 <template>
+  <h1>
+    Workout Walrus
+  </h1>
+
   <ul>
     <li>
       <a href="#/calculator">Calculator</a>
