@@ -38,7 +38,7 @@ import NotFound from './components/NotFound.vue';
 
 const routes = {
   '/': Home,
-  '/about': Exercise,
+  '/exercise': Exercise,
   '/calculator': Calculator
 }
 
@@ -54,9 +54,17 @@ const currentView = computed(() => {
 </script>
 
 <template>
-  <a href="#/calculator">Calculator</a>
-  <a href="#/">Home</a>
-  <a href="#/exercise">About</a>
+  <ul>
+    <li>
+      <a href="#/calculator">Calculator</a>
+    </li>
+    <li>
+      <a href="#/">Home</a>
+    </li>
+    <li>
+      <a href="#/exercise">Exercise</a>
+    </li>
+  </ul>
   <!-- <a href="#/non-existent-path">Broken Link</a> -->
   <component :is="currentView" />
 </template>
