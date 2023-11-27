@@ -1,6 +1,6 @@
 <script>
-
-
+import { types, muscles, difficulties } from '../selection/types';
+const paraExe = [ '', '', ''];
 
 async function getExercise(url = urlExercise) {
   const response = await fetch(url, {
@@ -70,9 +70,3 @@ async function getExercise(url = urlExercise) {
       </main>
     </div>
   </template>
-  
-<script setup>
-import { types, muscles, difficulties } from '../selection/types';
-
-const paraExe = [ '', '', ''];
-</script>
