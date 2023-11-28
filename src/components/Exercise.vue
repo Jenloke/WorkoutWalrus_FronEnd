@@ -1,8 +1,12 @@
 <script>
-import { types, muscles, difficulties } from '../selection/types';
+import { types } from '../selection/typesExercise';
+import { muscles } from '../selection/musclesExercise';
+import { difficulties } from '../selection/difficultiesExercise';
 const paraExe = [ '', '', ''];
 
-async function getExercise(url = urlExercise) {
+
+
+async function getExercise(url) {
   const response = await fetch(url, {
     headers: {
       'X-Api-Key': 'H2hjF7GM2NnHzuZTm5Nakw==cnVmqdsMHbfV8EVb'
@@ -11,26 +15,46 @@ async function getExercise(url = urlExercise) {
   console.log(response.json());
   // return response.json();
 }
+
+export default {
+  data() {
+    return {
+      selectedType: null,
+      optionTypes: types,
+      selectedMuscle: null, 
+      optionMuscles: muscles,
+      selecteDifficulty: null,
+      optionDifficulties: difficulties
+    }
+  }
+}
 </script>
 
 <template>
     <div id="main-content">
       <header>
-        <toolbar>
-          <h1 class="ion-text-justify">Workout Walrus</h1>
-        </toolbar>
+          <h1 class="ion-text-justify">
+            Workout Walrus
+          </h1>
       </header>
+
       <main>
-        <h1 class="ion-padding"><strong>Exercises</strong></h1>
+        <h1 class="ion-padding">
+          Exercises
+        </h1>
+
+        <select name="" id="" v-model="selectedType" required="true">  
+          <option disabled value="" selected>Select an option</option>
+          <option v-for="(optionTypes, index) in optionTypes" :key="index" :value="optionTypes.value">
+            {{ optionTypes.name }}
+          </option>
+        </select>
+        <p v-if="selectedType">Selected option: {{ selectedType }}</p>
+        <p v-else>No option selected</p>
+
+
   
-        <ul :inset="true">
-          <li>
-            <select label="Types" label-placement="fixed" placeholder="Select One" @change="paraExe[0]=$event.target.value">
-              <option v-for="(x, index) in types" :key="index" :value="x.value">{{ x.name }}</option>
-            </select>
-          </li>
-  
-          <li>
+          <!-- <li>
             <select label="Muscle" label-placement="fixed" placeholder="Select One" @change="paraExe[1]=$event.target.value">
               <option v-for="(x, index) in muscles" :key="index" :value="x.value">{{ x.name }}</option>
             </select>
@@ -40,14 +64,12 @@ async function getExercise(url = urlExercise) {
             <select label="Difficulties" label-placement="fixed" placeholder="Select One" @change="paraExe[2]=$event.target.value">
               <option v-for="(x, index) in difficulties" :key="index" :value="x.value">{{ x.name }}</option>
             </select>
-          </li>
+          </li> -->
           
-          <li id="button-generate-exercise" class="asd">
-            <button @click="getExercise(`https://api.api-ninjas.com/v1/exercises?type=${paraExe[0]}&?difficulty${paraExe[2]}`)"> 
-              Generate Exercise
-            </button>
-          </li> 
-        </ul>
+          <button @click="getExercise(`https://api.api-ninjas.com/v1/exercises?type=${paraExe[0]}&?difficulty${paraExe[2]}`)"> 
+            Generate Exercise
+          </button>
+          
   
         <ul :inset="true">
           <li>
