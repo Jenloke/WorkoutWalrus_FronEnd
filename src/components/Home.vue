@@ -11,7 +11,7 @@ export default {
   },
   methods: {
     update() {
-      // Logic for update button click
+      console.log("abc")
     }
   }
 };
@@ -20,51 +20,40 @@ export default {
 <template>
   <div id="main-content">
     <header>
-      <toolbar>
         <h1>Workout Walrus</h1>
-      </toolbar>
     </header>
-  
-    <main>
-      <ul :inset="true">
-        <li>
-          <div>
-              <img aria-hidden="true" :src="avatarSrc" alt="User Avatar" />
-              <span>{{ username }}</span>
-          </div>
-        </li>
-      </ul>
 
-      <ul lines="none" :inset="true">
-        <li>
-          <strong><h1>User Information</h1></strong>
-        </li>
-        <li>
-          <span>{{ height }}</span>
-        </li>
-        <li>
-          <span>{{ weight }}</span>
-        </li>
-        <li>
-          <span>{{ bmi }}</span>
-        </li>
-        <li>
-          <button @click="update">Update</button>
-        </li>
-      </ul>
+    <main>
+
+      <div>
+        <img aria-hidden="true" :src="avatarSrc" alt="User Avatar" />
+        <p>{{ username }}</p>
+      </div>
+
+      <div>
+      <h1>User Information</h1>
+        <ul lines="none" :inset="true">
+          <li>
+            <span>{{ height }}</span>
+          </li>
+          <li>
+            <span>{{ weight }}</span>
+          </li>
+          <li>
+            <span>{{ bmi }}</span>
+          </li>
+        </ul>
+        <button @click="update">Update</button>
+      </div>
       
-      <ul lines="none" :inset="true">
-        <li>
-          <strong><h1>Recent Activity</h1></strong>
-        </li>
-        <li>
-          <div>
-            <div>
-              <p>The quick brown fox jumped over the lazy dog.</p>
-            </div>
-          </div>
-        </li>
-      </ul>
+      <div>
+        <h1>Recent Activity</h1>  
+        <ul>
+          <li>
+            The quick brown fox jumped over the lazy dog.
+          </li>
+        </ul>
+      </div>
     </main>
   </div>
 </template>
