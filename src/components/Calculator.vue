@@ -1,18 +1,12 @@
 <template>
-    <div>
-        <header>
-        <toolbar>
-            <h1>Workout Walrus</h1>
-        </toolbar>
-        </header>
-        <main :fullscreen="true">
-        <header collapse="condense">
-            <toolbar>
-            <h1 size="large">Tab 3</h1>
-            </toolbar>
-        </header>
-
-        <h1><strong>Exercise Calculator</strong></h1>
+  <div>
+    <main :fullscreen="true">
+      <header collapse="condense">
+        <h1 size="large">Tab 3</h1>
+      </header>
+        <h1>
+          Exercise calculator
+        </h1>
 
         <ul :inset="true">
             <li>
