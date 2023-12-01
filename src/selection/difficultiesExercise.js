@@ -4,17 +4,17 @@ const difficulties = ref([
   {
     name: 'Beginner',
     value: 'beginner',
-    selected: 'false'
+    selected: false
   }, 
   {
     name: 'Intermediate',
     value: 'intermediate',
-    selected: 'false'
+    selected: false
   }, 
   {
     name: 'Expert',
     value: 'expert',
-    selected: 'false'
+    selected: false
   }
 ]);
 
