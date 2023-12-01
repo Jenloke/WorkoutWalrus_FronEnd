@@ -35,11 +35,15 @@ import Home from './components/Home.vue';
 import Calculator from './components/Calculator.vue';
 import Exercise from './components/Exercise.vue';
 import NotFound from './components/NotFound.vue';
+import Login from './components/Login.vue';
+import Register from './components/Register.vue';
 
 const routes = {
   '/': Home,
   '/exercise': Exercise,
-  '/calculator': Calculator
+  '/calculator': Calculator,
+  '/login': Login,
+  '/register': Register
 }
 
 const currentPath = ref(window.location.hash)
@@ -54,29 +58,38 @@ const currentView = computed(() => {
 </script>
 
 <template>
-  <div id="top-bar">
+  <div id="app">
+    <div id="top-bar">
+      
+      <h1>
+        <img id="Logo" src="./assets/Logo.svg" alt="Image" srcset=""/> 
+        Workout Walrus
+        <img id="Logo" src="./assets/Logo.svg" alt="Image" srcset=""/> 
+      </h1>
+      
+    </div>
     
-    <h1>
-      <img id="Logo" src="./assets/Logo.svg" alt="Image" srcset=""/> 
-      Workout Walrus
-      <img id="Logo" src="./assets/Logo.svg" alt="Image" srcset=""/> 
-    </h1>
-     
+    <ul id="bottom-bar">
+      <li>
+        <a href="#/calculator">Calculator</a>
+      </li>
+      <li>
+        <a href="#/">Home</a>
+      </li>
+      <li>
+        <a href="#/exercise">Exercise</a>
+      </li>
+      <li>
+        <a href="#/login">Login</a>
+      </li>
+      <li>
+        <a href="#/register">Register</a>
+      </li>
+    </ul>
+
+    <!-- <a href="#/non-existent-path">Broken Link</a> -->
+    <component :is="currentView" />
   </div>
-  
-  <ul id="bottom-bar">
-    <li>
-      <a href="#/calculator">Calculator</a>
-    </li>
-    <li>
-      <a href="#/">Home</a>
-    </li>
-    <li>
-      <a href="#/exercise">Exercise</a>
-    </li>
-  </ul>
-  <!-- <a href="#/non-existent-path">Broken Link</a> -->
-  <component :is="currentView" />
 </template>
 
 <style>

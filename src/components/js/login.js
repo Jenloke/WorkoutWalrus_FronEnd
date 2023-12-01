@@ -1,34 +1,41 @@
 import { ref } from 'vue';
-import axios from 'axios'
-
+import * as Realm from "realm-web";
 export const loginAuthentication = (router) =>{
-    const username = ref('')
-    const password = ref('')
+    const email = ref("")
+    const password = ref("")
+    const error = ref({})
+    const app = Realm.getApp("workout_final-jogzu");
 
     const authenticateUser = async () =>{
         try{
-            const response = await axios.post('http://localhost:3000/login',{
-                username: username.value,
-                password: password.value
-            });
-            if(response.status == 404){
-                //error message
+            console.log("start")
+            const credentials = Realm.Credentials.emailPassword(
+                email.value,
+                password.value
+            )
+            console.log("credentials")
+            try{
+                const user = await app.logIn(credentials)
+                console.log("logged in")
+                if(router){
+                    router.replace({path: `/`})
+                }else{
+                    console.log('tangina mo')
+                }
+            }catch(err){
+                console.error("Failed logging in", err)
             }
-
-            if(router){
-                router.replace({path: `/tabs/tab2/${username.value}`})
-            }else{
-                console.log('tangina mo')
-            }
-
-        }catch (error){
-            console.error('Error gago', error)
+        }catch (err){
+            console.error('Error gago', err)
         }
     }
 
     return {
-        username,
+        //properties
+        email,
         password,
+        error,
+        //method
         authenticateUser
     }
 }
