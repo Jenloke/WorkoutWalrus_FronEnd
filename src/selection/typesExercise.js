@@ -1,33 +1,42 @@
-const types = [ 
+import { ref } from 'vue'
+
+const types = ref([ 
     { 
       name: 'Cardio', 
-      value: 'cardio'
+      data: 'cardio',
+      selected: false
     },
     { 
       name: 'Olympic Weightlifting', 
-      value: 'olympic_weightlifting'
+      data: 'olympic_weightlifting',
+      selected: false
     },
     { 
       name: 'Plyometrics', 
-      value: 'plyometrics'
+      data: 'plyometrics',
+      selected: false
     },
     { 
       name: 'Powerlifting', 
-      value: 'powerlifting'
+      data: 'powerlifting',
+      selected: false
     },
     { 
       name: 'Strength', 
-      value: 'strength'
+      data: 'strength',
+      selected: false
     },
     { 
       name: 'Stretching', 
-      value: 'stretching'
+      data: 'stretching',
+      selected: false
     },
     { 
       name: 'Strongman', 
-      value: 'strongman'
+      data: 'strongman',
+      selected: false
     }
-]
+])
 
 export { types }
 

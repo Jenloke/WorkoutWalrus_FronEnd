@@ -1,16 +1,21 @@
-const difficulties = [
-    {
-      name: 'Beginner',
-      value: 'beginner'
-    }, 
-    {
-      name: 'Intermediate',
-      value: 'intermediate' 
-    }, 
-    {
-      name: 'Expert',
-      value: 'expert'
-    }
-];
+import { ref } from 'vue'
+
+const difficulties = ref([
+  {
+    name: 'Beginner',
+    value: 'beginner',
+    selected: 'false'
+  }, 
+  {
+    name: 'Intermediate',
+    value: 'intermediate',
+    selected: 'false'
+  }, 
+  {
+    name: 'Expert',
+    value: 'expert',
+    selected: 'false'
+  }
+]);
 
 export { difficulties }
