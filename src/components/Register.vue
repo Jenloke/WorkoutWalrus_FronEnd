@@ -1,20 +1,26 @@
 <template>
     <div>
       <header>
-        <toolbar>
+        <!-- <toolbar>
           <h1>Signup</h1>
-        </toolbar>
+        </toolbar> -->
+        <h1>Signup</h1>
       </header>
   
       <main class="ion-padding">
         <div>
-          <label for="username">Username</label>
-          <input id="username" v-model="username" type="text">
+          <label for="email">Email</label>
+          <input id="email" v-model="email" type="text">
         </div>
   
         <div>
           <label for="password">Password</label>
           <input id="password" v-model="password" type="password">
+        </div>
+
+        <div>
+          <label for="username">Username</label>
+          <input id="username" v-model="username" type="text">
         </div>
   
         <div>
@@ -46,6 +52,5 @@
 import { registerUser } from './js/register.js'
 import { useRouter } from 'vue-router';
 const router = useRouter()
-router.isReady()
-const {username, password, birthday, name, height, weight, signUp} = registerUser(router)
+const {email,username, password, birthday, name, height, weight, signUp} = registerUser(router)
 </script>

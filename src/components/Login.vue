@@ -1,15 +1,16 @@
 <template>
-    <div>
+    <div id="login">
       <header>
-        <toolbar>
+        <!-- <toolbar>
           <h1>Login</h1>
-        </toolbar>
+        </toolbar> -->
+        <h1>Login</h1>
       </header>
   
       <main class="ion-padding">
         <div>
-          <label for="username">Username</label>
-          <input id="username" type="text">
+          <label for="email">Email</label>
+          <input id="email" type="text">
         </div>
   
         <div>
@@ -17,15 +18,14 @@
           <input id="password" type="password">
         </div>
   
-        <button>Login</button>
+        <button @click="authenticateUser">Login</button>
       </main>
     </div>
   </template>
 
 <script setup>
-import { loginAuthentication } from '.\js\login.js'
+import { loginAuthentication } from './js/login.js'
 import { useRouter } from 'vue-router';
 const router = useRouter()
-router.isReady()
-const { username, password, authenticateUser } = loginAuthentication(router)
+const { email, password, authenticateUser } = loginAuthentication(router)
 </script>
