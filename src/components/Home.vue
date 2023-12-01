@@ -6,7 +6,7 @@ export default {
       height: 'Height: 180cm',
       weight: 'Weight: 75kg',
       bmi: 'BMI: 23.15',
-      avatarSrc: 'https://ionicframework.com/docs/img/demos/avatar.svg'
+      avatarSrc: 'src/assets/pfp.svg'
     };
   },
   methods: {

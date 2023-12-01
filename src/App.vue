@@ -55,11 +55,13 @@ const currentView = computed(() => {
 
 <template>
   <div id="top-bar">
-    <img src="./assets/vue.svg" alt="Image" srcset=""/>
+    
     <h1>
+      <img id="Logo" src="./assets/Logo.svg" alt="Image" srcset=""/> 
       Workout Walrus
+      <img id="Logo" src="./assets/Logo.svg" alt="Image" srcset=""/> 
     </h1>
-    <img id="settings" src="./assets/vue.svg" alt="Image" srcset=""/>
+     
   </div>
   
   <ul id="bottom-bar">
