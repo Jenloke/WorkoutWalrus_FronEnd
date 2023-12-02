@@ -41,9 +41,8 @@ export const registerUser = (router) =>{
             }
 
             console.log('User signed up successfully')
-            const router = useRouter()
             if(router){
-                router.replace({path: `/login`})
+                router.replace({path: `/`})
             }else{
                 console.log('tangina mo')
             }
