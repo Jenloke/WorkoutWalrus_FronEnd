@@ -8,5 +8,18 @@ import App from './App.vue'
 import * as Realm from "realm-web";
 new Realm.App({id: 'workout_final-jogzu'})
 
-const app = createApp(App);
+library.add(fas);
+
+const app = createApp(App)
+.component('fa', FontAwesomeIcon)
 app.mount('#app');
+
+const trigger = document.querySelectorAll('nav li');
+  trigger.forEach((menu) => menu.addEventListener('click' , toggle));
+
+  function toggle(){
+    trigger.forEach((item) => item != this ? item.classList.remove('active'):null);
+    if (this.classList != 'active'){
+      this.classList.toggle('active');
+    }
+  }

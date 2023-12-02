@@ -38,6 +38,7 @@ import NotFound from './components/NotFound.vue';
 import Login from './components/Login.vue';
 import Register from './components/Register.vue';
 
+
 const routes = {
   '/': Home,
   '/exercise': Exercise,
@@ -55,6 +56,11 @@ window.addEventListener('hashchange', () => {
 const currentView = computed(() => {
   return routes[currentPath.value.slice(1) || '/'] || NotFound
 })
+
+function toggle(){
+
+}
+
 </script>
 
 
@@ -68,18 +74,22 @@ const currentView = computed(() => {
     </h1>
      
   </div>
-  
-  <ul id="bottom-bar">
-    <li>
-      <a href="#/calculator">Calculator</a>
-    </li>
-    <li>
-      <a href="#/">Home</a>
-    </li>
-    <li>
-      <a href="#/exercise">Exercise</a>
-    </li>
-  </ul>
+  <div>
+    <nav>
+      <ul>''
+        <li @click="toggle">
+          <a href="#/calculator">Calculator<fa icon="fire"/></a>
+        </li>
+        <li @click="toggle" class="active">
+          <a href="#/">Home<fa icon="home"/></a>
+        </li >
+        <li @click="toggle">
+          <a href="#/exercise">Exercise<fa icon="dumbbell"/></a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
   <!-- <a href="#/non-existent-path">Broken Link</a> -->
   <component :is="currentView" />
 </template>

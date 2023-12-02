@@ -56,7 +56,7 @@ nav :where(li, a) {
   position:relative;
 }
 
-nav ul li a {
+nav li a {
   display: flex;
   align-items: center;
   justify-content: center;
