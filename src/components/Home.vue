@@ -37,14 +37,14 @@ export default {
 <template>
   <div id="main-content">
     <header>
-        <h1>{{ username }}</h1>
+        <h1>{{ userData.username }}</h1>
     </header>
 
     <main>
 
       <div>
         <img aria-hidden="true" :src="avatarSrc" alt="User Avatar" />
-        <p>{{ userData.username }}</p>
+        <p>{{ userData.name }}</p>
       </div>
 
       <div id="UserInfo">

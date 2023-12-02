@@ -30,31 +30,31 @@ import HelloWorld from './components/HelloWorld.vue'
 </style> -->
 
 <script setup>
-import { ref, computed } from 'vue';
-import Home from './components/Home.vue';
-import Calculator from './components/Calculator.vue';
-import Exercise from './components/Exercise.vue';
-import NotFound from './components/NotFound.vue';
-import Login from './components/Login.vue';
-import Register from './components/Register.vue';
+// import { ref, computed } from 'vue';
+// import Home from './components/Home.vue';
+// import Calculator from './components/Calculator.vue';
+// import Exercise from './components/Exercise.vue';
+// import NotFound from './components/NotFound.vue';
+// import Login from './components/Login.vue';
+// import Register from './components/Register.vue';
 
-const routes = {
-  '/': Home,
-  '/exercise': Exercise,
-  '/calculator': Calculator,
-  '/login': Login,
-  '/register': Register
-}
+// const routes = {
+//   '/': Home,
+//   '/exercise': Exercise,
+//   '/calculator': Calculator,
+//   '/login': Login,
+//   '/register': Register
+// }
 
-const currentPath = ref(window.location.hash)
+// const currentPath = ref(window.location.hash)
 
-window.addEventListener('hashchange', () => {
-  currentPath.value = window.location.hash
-})
+// window.addEventListener('hashchange', () => {
+//   currentPath.value = window.location.hash
+// })
 
-const currentView = computed(() => {
-  return routes[currentPath.value.slice(1) || '/'] || NotFound
-})
+// const currentView = computed(() => {
+//   return routes[currentPath.value.slice(1) || '/'] || NotFound
+// })
 </script>
 
 
@@ -70,7 +70,7 @@ const currentView = computed(() => {
   </div>
   
   <ul id="bottom-bar">
-    <li>
+    <!-- <li>
       <a href="#/calculator">Calculator</a>
     </li>
     <li>
@@ -79,9 +79,31 @@ const currentView = computed(() => {
     <li>
       <a href="#/exercise">Exercise</a>
     </li>
+    <li>
+      <a href="#/login">Login</a>
+    </li>
+    <li>
+      <a href="#/register">Register</a>
+    </li> -->
+    <li>
+      <router-link to="/">Home</router-link>
+    </li>
+    <li>
+      <router-link to="/calculator">Calculator</router-link>
+    </li>
+    <li>
+      <router-link to="/exercise">Exercise</router-link>
+    </li>
+    <li>
+      <router-link to="/login">Login</router-link>
+    </li>
+    <li>
+      <router-link to="/register">Register</router-link>
+    </li>
   </ul>
+  <router-view></router-view>
   <!-- <a href="#/non-existent-path">Broken Link</a> -->
-  <component :is="currentView" />
+  <!-- <component :is="currentView" /> -->
 </template>
 
 
