@@ -18,16 +18,36 @@ export default {
   // }
   setup(){
     const userData = ref(null)
+    const weightLabel = ref(0.0)
+    const heightLabel = ref(0.0)
+    let weight, height
+    const bmi = ref(0.0)
     const app = Realm.getApp("workout_final-jogzu");
     const user = app.currentUser
     userData.value = user.customData
 
+    const fetchData = async () =>{
+      userData.value = user.customData
+
+      weightLabel.value = parseFloat(userData.value.weight["$numberDouble"])
+      weight = parseFloat(userData.value.weight["$numberDouble"])
+
+      heightLabel.value = parseFloat(userData.value.height["$numberDouble"])
+      height = parseFloat(userData.value.height["$numberDouble"])
+      
+      bmi.value = (weight/(height*0.01)**2).toFixed(2)
+
+    }
+
     onMounted(async ()=>{
       await app.currentUser.refreshCustomData()
-      userData.value = user.customData
+      await fetchData()
     })
     return{
       userData,
+      weightLabel,
+      heightLabel,
+      bmi,
     }
     
   }
@@ -51,13 +71,13 @@ export default {
       <h1>User Information</h1>
         <ul lines="none" :inset="true">
           <li>
-            <span>{{ userData.height }}</span>
+            <span>{{ heightLabel }}</span>
           </li>
           <li>
-            <span>{{ userData.weight }}</span>
+            <span>{{ weightLabel }}</span>
           </li>
           <li>
-            <span>{{ bmi = (userData.weight/(userData.height*0.01)**2).toFixed(2) }}</span>
+            <span>{{ bmi }}</span>
           </li>
         </ul>
         <button @click="update">Update</button>
