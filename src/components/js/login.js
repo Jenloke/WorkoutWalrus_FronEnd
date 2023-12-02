@@ -13,9 +13,9 @@ export const loginAuthentication = (router) =>{
                 email.value,
                 password.value
             )
-            console.log("credentials")
+            console.log(credentials)
             try{
-                const user = await app.logIn(credentials)
+                await app.logIn(credentials)
                 console.log("logged in")
                 if(router){
                     router.replace({path: `/`})
