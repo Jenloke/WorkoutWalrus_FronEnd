@@ -1,18 +1,35 @@
 <script>
+import * as Realm from "realm-web";
+import { ref, onMounted } from 'vue';
 export default {
-  data() {
-    return {
-      username: 'John Doe',
-      height: 'Height: 180cm',
-      weight: 'Weight: 75kg',
-      bmi: 'BMI: 23.15',
-      avatarSrc: 'src/assets/pfp.svg'
-    };
-  },
-  methods: {
-    update() {
-      console.log("abc")
+  // data() {
+  //   return {
+  //     username: 'John Doe',
+  //     height: 'Height: 180cm',
+  //     weight: 'Weight: 75kg',
+  //     bmi: 'BMI: 23.15',
+  //     avatarSrc: 'src/assets/pfp.svg'
+  //   };
+  // },
+  // methods: {
+  //   update() {
+  //     console.log("abc")
+  //   }
+  // }
+  setup(){
+    const userData = ref(null)
+    const app = Realm.getApp("workout_final-jogzu");
+    const user = app.currentUser
+    userData.value = user.customData
+
+    onMounted(async ()=>{
+      await app.currentUser.refreshCustomData()
+      userData.value = user.customData
+    })
+    return{
+      userData,
     }
+    
   }
 };
 </script>
@@ -27,19 +44,20 @@ export default {
 
       <div>
         <img aria-hidden="true" :src="avatarSrc" alt="User Avatar" />
+        <p>{{ userData.username }}</p>
       </div>
 
       <div id="UserInfo">
       <h1>User Information</h1>
         <ul lines="none" :inset="true">
           <li>
-            <span>{{ height }}</span>
+            <span>{{ userData.height }}</span>
           </li>
           <li>
-            <span>{{ weight }}</span>
+            <span>{{ userData.weight }}</span>
           </li>
           <li>
-            <span>{{ bmi }}</span>
+            <span>{{ bmi = (userData.weight/(userData.height*0.01)**2).toFixed(2) }}</span>
           </li>
         </ul>
         <button @click="update">Update</button>

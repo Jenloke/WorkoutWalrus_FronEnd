@@ -3,37 +3,37 @@ import { ref } from 'vue'
 const types = ref([ 
     { 
       name: 'Cardio', 
-      data: 'cardio',
+      value: 'cardio',
       selected: false
     },
     { 
       name: 'Olympic Weightlifting', 
-      data: 'olympic_weightlifting',
+      value: 'olympic_weightlifting',
       selected: false
     },
     { 
       name: 'Plyometrics', 
-      data: 'plyometrics',
+      value: 'plyometrics',
       selected: false
     },
     { 
       name: 'Powerlifting', 
-      data: 'powerlifting',
+      value: 'powerlifting',
       selected: false
     },
     { 
       name: 'Strength', 
-      data: 'strength',
+      value: 'strength',
       selected: false
     },
     { 
       name: 'Stretching', 
-      data: 'stretching',
+      value: 'stretching',
       selected: false
     },
     { 
       name: 'Strongman', 
-      data: 'strongman',
+      value: 'strongman',
       selected: false
     }
 ])

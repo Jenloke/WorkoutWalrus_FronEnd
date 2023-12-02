@@ -35,11 +35,15 @@ import Home from './components/Home.vue';
 import Calculator from './components/Calculator.vue';
 import Exercise from './components/Exercise.vue';
 import NotFound from './components/NotFound.vue';
+import Login from './components/Login.vue';
+import Register from './components/Register.vue';
 
 const routes = {
   '/': Home,
   '/exercise': Exercise,
-  '/calculator': Calculator
+  '/calculator': Calculator,
+  '/login': Login,
+  '/register': Register
 }
 
 const currentPath = ref(window.location.hash)
@@ -60,20 +64,22 @@ const currentView = computed(() => {
     <h1>
       <img id="Logo" src="./assets/Logo.svg" alt="Image" srcset=""/> 
       Workout Walrus
+      <img id="Logo" src="./assets/Logo.svg" alt="Image" srcset=""/> 
     </h1>
      
   </div>
-    <div id="page" class="class">
-    <div class="container">
-      <nav>
-        <ul>
-          <li><a href="#/calculator"><span>Calculator</span><fa icon="fire"/></a></li>
-          <li class="active"><a href="#/"><span>Home</span><fa icon="home"/></a></li>
-          <li><a href="#/exercise"><span>Exercise</span><fa icon="dumbbell"/></a></li>
-        </ul>
-      </nav>
-    </div>
-  </div>
+  
+  <ul id="bottom-bar">
+    <li>
+      <a href="#/calculator">Calculator</a>
+    </li>
+    <li>
+      <a href="#/">Home</a>
+    </li>
+    <li>
+      <a href="#/exercise">Exercise</a>
+    </li>
+  </ul>
   <!-- <a href="#/non-existent-path">Broken Link</a> -->
   <component :is="currentView" />
 </template>

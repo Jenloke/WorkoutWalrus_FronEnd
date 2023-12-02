@@ -5,18 +5,8 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import App from './App.vue'
 
-library.add(fas);
+import * as Realm from "realm-web";
+new Realm.App({id: 'workout_final-jogzu'})
 
-createApp(App)
-.component('fa', FontAwesomeIcon)
-.mount('#app')
-
-const trigger = document.querySelectorAll('nav li');
-trigger.forEach((menu) => menu.addEventListener('click', toggle));
-
-function toggle() {
-  trigger.forEach((item) => item !== this ? item.classList.remove('active') : null);
-  if (!this.classList.contains('active')) {
-    this.classList.toggle('active');
-  }
-}
+const app = createApp(App);
+app.mount('#app');

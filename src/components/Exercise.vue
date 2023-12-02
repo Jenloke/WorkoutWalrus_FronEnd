@@ -6,14 +6,14 @@ import { difficulties } from '../selection/difficultiesExercise';
 
 const paraExe = [ '', '', ''];
 
-let selectedType = ref(null)
-let selectedMuscle = ref(null)
-let selecteDifficulty = ref(null)
+const selectedType = ref('')
+let selectedMuscle = ref('')
+let selecteDifficulty = ref("")
 
 let select = ref(false)
 
-function getExercise() {
-
+function display(x) {
+  console.log(x)
 }
 
 // async function getExercise(url) {
@@ -26,6 +26,9 @@ function getExercise() {
 //   // return response.json();
 // }
 
+const selected = ref('')
+
+
 </script>
 
 <template>
@@ -36,42 +39,52 @@ function getExercise() {
           </h1>
       </header>
 
+      <div>
+        {{ selected }}
+      </div>
+
       <main>
         <div>
-          <select name="Types" id="" required="true">  
+          <select v-model="selectedType" @change="console.log(selectedType)">
             <option disabled value="" selected>Select an option</option>
-            <option v-for="(type, index) in types" :key="index" :value="types.data">
+            <option v-for="type in types" :value="type.value"> 
               {{ type.name }}
             </option>
           </select>
 
-          <br/>
+          <br>
 
-          <select name="Musles" id="" required="true">  
+          <select v-model="selectedMuscle">
             <option disabled value="" selected>Select an option</option>
-            <option v-for="(muscle, index) in muscles" :key="index" :value="muscle.data">
+            <option v-for="muscle in muscles" :value="muscle.value"> 
               {{ muscle.name }}
             </option>
           </select>
+          
+          <br>
 
-          <br/>
-
-          <select name="Types" id="" required="true">  
+          <select v-model="selecteDifficulty">
             <option disabled value="" selected>Select an option</option>
-            <option v-for="(difficulty, index) in difficulties" :key="index" :value="difficulty.data">
+            <option v-for="difficulty in difficulties" :value="difficulty.value"> 
               {{ difficulty.name }}
             </option>
           </select>
         </div>
-        <button @click="getExercise(`https://api.api-ninjas.com/v1/exercises?type=${paraExe[0]}&?difficulty${paraExe[2]}`)"> 
+        
+        <button @click="select = !select">
           Generate Exercise
         </button>
+
+        <!-- <button @click="getExercise(`https://api.api-ninjas.com/v1/exercises?type=${paraExe[0]}&?difficulty${paraExe[2]}`)"> 
+          Generate Exercise
+        </button> -->
           
-  
         <div v-if="!select">
           <p>No Exercise</p>
+          <p>{{ selectedType }} - {{ selectedMuscle }} - {{ selecteDifficulty }}</p>
         </div>
         <ul v-else>
+          <p>{{ selectedType }} - {{ selectedMuscle }} - {{ selecteDifficulty }}</p>
           <li>
             <label>Push-ups</label>
           </li>
