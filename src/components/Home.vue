@@ -20,17 +20,16 @@ export default {
 <template>
   <div id="main-content">
     <header>
-        <h1>Workout Walrus</h1>
+        <h1>{{ username }}</h1>
     </header>
 
     <main>
 
       <div>
         <img aria-hidden="true" :src="avatarSrc" alt="User Avatar" />
-        <p>{{ username }}</p>
       </div>
 
-      <div>
+      <div id="UserInfo">
       <h1>User Information</h1>
         <ul lines="none" :inset="true">
           <li>
@@ -46,7 +45,7 @@ export default {
         <button @click="update">Update</button>
       </div>
       
-      <div>
+      <div id="recent-Act">
         <h1>Recent Activity</h1>  
         <ul>
           <li>

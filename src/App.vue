@@ -53,31 +53,32 @@ const currentView = computed(() => {
 })
 </script>
 
+
 <template>
   <div id="top-bar">
     
     <h1>
       <img id="Logo" src="./assets/Logo.svg" alt="Image" srcset=""/> 
       Workout Walrus
-      <img id="Logo" src="./assets/Logo.svg" alt="Image" srcset=""/> 
     </h1>
      
   </div>
-  
-  <ul id="bottom-bar">
-    <li>
-      <a href="#/calculator">Calculator</a>
-    </li>
-    <li>
-      <a href="#/">Home</a>
-    </li>
-    <li>
-      <a href="#/exercise">Exercise</a>
-    </li>
-  </ul>
+    <div id="page" class="class">
+    <div class="container">
+      <nav>
+        <ul>
+          <li><a href="#/calculator"><span>Calculator</span><fa icon="fire"/></a></li>
+          <li class="active"><a href="#/"><span>Home</span><fa icon="home"/></a></li>
+          <li><a href="#/exercise"><span>Exercise</span><fa icon="dumbbell"/></a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
   <!-- <a href="#/non-existent-path">Broken Link</a> -->
   <component :is="currentView" />
 </template>
+
+
 
 <style>
   #top-bar {
