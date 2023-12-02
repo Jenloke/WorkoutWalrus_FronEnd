@@ -57,40 +57,34 @@ const currentView = computed(() => {
 })
 </script>
 
-<template>
-  <div id="app">
-    <div id="top-bar">
-      
-      <h1>
-        <img id="Logo" src="./assets/Logo.svg" alt="Image" srcset=""/> 
-        Workout Walrus
-        <img id="Logo" src="./assets/Logo.svg" alt="Image" srcset=""/> 
-      </h1>
-      
-    </div>
-    
-    <ul id="bottom-bar">
-      <li>
-        <a href="#/calculator">Calculator</a>
-      </li>
-      <li>
-        <a href="#/">Home</a>
-      </li>
-      <li>
-        <a href="#/exercise">Exercise</a>
-      </li>
-      <li>
-        <a href="#/login">Login</a>
-      </li>
-      <li>
-        <a href="#/register">Register</a>
-      </li>
-    </ul>
 
-    <!-- <a href="#/non-existent-path">Broken Link</a> -->
-    <component :is="currentView" />
+<template>
+  <div id="top-bar">
+    
+    <h1>
+      <img id="Logo" src="./assets/Logo.svg" alt="Image" srcset=""/> 
+      Workout Walrus
+      <img id="Logo" src="./assets/Logo.svg" alt="Image" srcset=""/> 
+    </h1>
+     
   </div>
+  
+  <ul id="bottom-bar">
+    <li>
+      <a href="#/calculator">Calculator</a>
+    </li>
+    <li>
+      <a href="#/">Home</a>
+    </li>
+    <li>
+      <a href="#/exercise">Exercise</a>
+    </li>
+  </ul>
+  <!-- <a href="#/non-existent-path">Broken Link</a> -->
+  <component :is="currentView" />
 </template>
+
+
 
 <style>
   #top-bar {

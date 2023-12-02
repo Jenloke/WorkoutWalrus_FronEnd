@@ -10,12 +10,12 @@
       <main class="ion-padding">
         <div>
           <label for="email">Email</label>
-          <input id="email" type="text">
+          <input id="email" v-model="email" type="text">
         </div>
   
         <div>
           <label for="password">Password</label>
-          <input id="password" type="password">
+          <input id="password" v-model="password" type="password">
         </div>
   
         <button @click="authenticateUser">Login</button>
