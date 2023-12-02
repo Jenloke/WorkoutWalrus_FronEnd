@@ -16,12 +16,10 @@ import Register from './components/Register.vue';
 import * as Realm from "realm-web";
 new Realm.App({id: 'workout_final-jogzu'})
 
-<<<<<<< HEAD
 library.add(fas);
 
 const app = createApp(App)
 .component('fa', FontAwesomeIcon)
-=======
 const router = createRouter({
     history: createWebHistory(),
     routes: [
@@ -34,10 +32,8 @@ const router = createRouter({
     ]
 });
 
-const app = createApp(App);
 app.use(router);
 
->>>>>>> 5fd998d6701660a3616781308782b65ceb4c3458
 app.mount('#app');
 
 const trigger = document.querySelectorAll('nav li');

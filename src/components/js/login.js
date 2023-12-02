@@ -18,7 +18,7 @@ export const loginAuthentication = (router) =>{
                 await app.logIn(credentials)
                 console.log("logged in")
                 if(router){
-                    router.replace({path: `/`})
+                    router.replace({path: `/home`})
                 }else{
                     console.log('tangina mo')
                 }
