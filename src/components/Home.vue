@@ -43,7 +43,7 @@ export default {
     <main>
 
       <div>
-        <img aria-hidden="true" :src="avatarSrc" alt="User Avatar" />
+        <img aria-hidden="true" src="src/assets/pfp.svg" alt="User Avatar" />
         <p>{{ userData.name }}</p>
       </div>
 

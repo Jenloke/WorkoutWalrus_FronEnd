@@ -29,12 +29,7 @@ import HelloWorld from './components/HelloWorld.vue'
 }
 </style> -->
 
-<script setup>
-function toggle(){
 
-}
-
-</script>
 
 
 <template>
@@ -43,44 +38,48 @@ function toggle(){
     <h1>
       <img id="Logo" src="./assets/Logo.svg" alt="Image" srcset=""/> 
       Workout Walrus
-      <img id="Logo" src="./assets/Logo.svg" alt="Image" srcset=""/> 
     </h1>
      
   </div>
   
-  <div>
-    <nav>
-    <ul id="bottom-bar">
-      <li @click="toggle">
-        <router-link to="/home">Home<fa icon="home"/></router-link>
-      </li>
-      <li @click="toggle">
-        <router-link to="/calculator">Calculator</router-link>
-      </li>
-      <li @click="toggle">
-        <router-link to="/exercise">Exercise</router-link>
-      </li>
-  </ul>
-
-    </nav>
+  <div class="navigation">
+      <ul>
+        <li class="list ">
+            <router-link to="/calculator">
+              <span class="icon">
+                <fa icon="fire"/>
+              </span>
+              <span class="text">
+                Calculator
+              </span>
+            </router-link>
+        </li>
+        <li class="list active">
+            <router-link to="/home">
+              <span class="icon">
+                <fa icon="home"/>
+              </span>
+              <span class="text">
+                Home
+              </span>
+            </router-link>
+        </li>
+        <li class="list">
+            <router-link to="/exercise">
+              <span class="icon">
+                <fa icon="dumbbell"/>
+              </span>
+              <span class="text">
+                Exercise
+              </span>
+            </router-link>
+        </li>
+        <div class="indicator"></div>
+      </ul>
+    
   </div>
+  
   <router-view></router-view>
   <!-- <a href="#/non-existent-path">Broken Link</a> -->
   <!-- <component :is="currentView" /> -->
 </template>
-
-
-
-<style>
-  #top-bar {
-    display: flex;
-    flex-direction: row;
-  }
-
-  #bottom-bar { 
-    display: flex;
-    flex-direction: row;
-    justify-content:space-evenly;
-  }
-</style>
-

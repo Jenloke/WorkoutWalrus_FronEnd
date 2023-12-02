@@ -36,12 +36,11 @@ app.use(router);
 
 app.mount('#app');
 
-const trigger = document.querySelectorAll('nav li');
-  trigger.forEach((menu) => menu.addEventListener('click' , toggle));
-
-  function toggle(){
-    trigger.forEach((item) => item != this ? item.classList.remove('active'):null);
-    if (this.classList != 'active'){
-      this.classList.toggle('active');
-    }
+  const list = document.querySelectorAll('.list');
+  function activeLink(){
+    list.forEach((item) => 
+    item.classList.remove('active'));
+    this.classList.add('active');
   }
+  list.forEach((item) => 
+  item.addEventListener('click', activeLink));
