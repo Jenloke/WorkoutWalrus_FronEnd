@@ -33,16 +33,15 @@ import HelloWorld from './components/HelloWorld.vue'
 
 
 <template>
-  <div id="top-bar">
-    
+  <div class="ww-logo">
     <h1>
-      <img id="Logo" src="./assets/Logo.svg" alt="Image" srcset=""/> 
-      Workout Walrus
+      <span class="logo"><img class="logo" src="./assets/Logo.svg" alt="Image" srcset=""/></span> 
+      <span class="ww-header">Workout Walrus</span>
     </h1>
      
   </div>
   
-  <div class="navigation">
+  <div class="navigation" :class="{ 'hidden': isLoginOrRegistrationScreen }">
       <ul>
         <li class="list ">
             <router-link to="/calculator">
@@ -83,3 +82,31 @@ import HelloWorld from './components/HelloWorld.vue'
   <!-- <a href="#/non-existent-path">Broken Link</a> -->
   <!-- <component :is="currentView" /> -->
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      isLoginOrRegistrationScreen: this.isLoginOrRegistrationRoute(),
+    };
+  },
+  watch: {
+    $route: 'updateLoginOrRegistrationScreenStatus',
+  },
+  methods: {
+    updateLoginOrRegistrationScreenStatus() {
+      this.isLoginOrRegistrationScreen = this.isLoginOrRegistrationRoute();
+    },
+    isLoginOrRegistrationRoute() {
+      const currentRouteName = this.$router.currentRoute.name;
+      return currentRouteName === 'Login' || currentRouteName === 'Register';
+    },
+  },
+};
+</script>
+
+<style scoped>
+.hidden{
+  visibility: hidden;
+}
+</style>

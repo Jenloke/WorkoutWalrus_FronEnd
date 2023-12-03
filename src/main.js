@@ -1,4 +1,5 @@
 import { createApp } from 'vue'
+import { MotionPlugin } from '@vueuse/motion'
 import './style.css'
 import { createRouter, createWebHistory } from 'vue-router'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
@@ -33,7 +34,7 @@ const router = createRouter({
 });
 
 app.use(router);
-
+app.use(MotionPlugin);
 app.mount('#app');
 
   const list = document.querySelectorAll('.list');

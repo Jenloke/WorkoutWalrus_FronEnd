@@ -32,7 +32,7 @@ const selected = ref('')
 </script>
 
 <template>
-    <div id="main-content">
+    <div id="main-content" v-motion-slide-left>
       <header>
           <h1>
             Exercise

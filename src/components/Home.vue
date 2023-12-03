@@ -55,20 +55,15 @@ export default {
 </script>
 
 <template>
-  <div id="main-content">
-    <header>
+  <div  id="main-content" v-motion-slide-top>
+    <header class="user">
         <h1>{{ userData.username }}</h1>
+        <img aria-hidden="true" src="src/assets/pfp.svg" alt="User Avatar" /> 
     </header>
-
     <main>
-
-      <div>
-        <img aria-hidden="true" src="src/assets/pfp.svg" alt="User Avatar" />
-        <p>{{ userData.name }}</p>
-      </div>
-
       <div id="UserInfo">
       <h1>User Information</h1>
+        <p>{{ userData.name }}</p>
         <ul lines="none" :inset="true">
           <li>
             <span>{{ heightLabel }}</span>
