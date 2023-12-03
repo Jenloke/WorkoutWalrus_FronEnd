@@ -41,9 +41,9 @@ import HelloWorld from './components/HelloWorld.vue'
      
   </div>
   
-  <div class="navigation" :class="{ 'hidden': isLoginOrRegistrationScreen }">
+  <div v-show="shouldShowNavBar" class="navigation">
       <ul>
-        <li class="list ">
+        <li class="list">
             <router-link to="/calculator">
               <span class="icon">
                 <fa icon="fire"/>
@@ -85,28 +85,12 @@ import HelloWorld from './components/HelloWorld.vue'
 
 <script>
 export default {
-  data() {
-    return {
-      isLoginOrRegistrationScreen: this.isLoginOrRegistrationRoute(),
-    };
-  },
-  watch: {
-    $route: 'updateLoginOrRegistrationScreenStatus',
-  },
-  methods: {
-    updateLoginOrRegistrationScreenStatus() {
-      this.isLoginOrRegistrationScreen = this.isLoginOrRegistrationRoute();
-    },
-    isLoginOrRegistrationRoute() {
-      const currentRouteName = this.$router.currentRoute.name;
-      return currentRouteName === 'Login' || currentRouteName === 'Register';
+  computed: {
+    shouldShowNavBar() {
+      // Specify the routes where you want to hide the navigation bar
+      const routesWithoutNavBar = ['/', '/register'];
+      return !routesWithoutNavBar.includes(this.$route.path);
     },
   },
 };
 </script>
-
-<style scoped>
-.hidden{
-  visibility: hidden;
-}
-</style>
