@@ -57,25 +57,31 @@ export default {
 <template>
   <div  id="main-content" v-motion-slide-top>
     <header class="user">
-        <h1>{{ userData.username }}</h1>
-        <img aria-hidden="true" src="src/assets/pfp.svg" alt="User Avatar" /> 
+        <h1 >{{ userData.username }}</h1>
+        <img id="pfp" aria-hidden="true" src="src/assets/pfp.svg" alt="User Avatar" /> 
     </header>
     <main>
-      <div id="UserInfo">
+      <div id="UserInfo" v-motion-slide-top>
       <h1>User Information</h1>
         <p>{{ userData.name }}</p>
         <ul lines="none" :inset="true">
           <li>
-            <span>{{ heightLabel }}</span>
+            <span class="wlabel">Height: {{ heightLabel }}</span>
           </li>
           <li>
-            <span>{{ weightLabel }}</span>
+            <span class="wlabel">Weight: {{ weightLabel }}</span>
           </li>
           <li>
-            <span>{{ bmi }}</span>
+            <span class="wlabel">BMI: {{ bmi }}</span>
           </li>
         </ul>
-        <button @click="update">Update</button>
+
+        <div class="center">
+          <button class="button updated" @click="update">
+            Update
+          </button>
+        </div>
+        
       </div>
       
       <div id="recent-Act">
