@@ -66,10 +66,10 @@ export default {
         <p>{{ userData.name }}</p>
         <ul lines="none" :inset="true">
           <li>
-            <span class="wlabel">Height: {{ heightLabel }}</span>
+            <span class="wlabel">Height: {{ heightLabel }}cm</span>
           </li>
           <li>
-            <span class="wlabel">Weight: {{ weightLabel }}</span>
+            <span class="wlabel">Weight: {{ weightLabel }}Kg</span>
           </li>
           <li>
             <span class="wlabel">BMI: {{ bmi }}</span>
@@ -84,7 +84,7 @@ export default {
         
       </div>
       
-      <div id="recent-Act">
+      <div id="recent-Act" v-motion-slide-top>
         <h1>Recent Activity</h1>  
         <ul>
           <li>

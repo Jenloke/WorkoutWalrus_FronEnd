@@ -1,18 +1,23 @@
 <template>
-    <section id="logged">
+  <section id="logged">
     <div id="login">
       <div class="login-content">
       <header>
-        <h2>Login</h2>
+        <h2>
+          <span class="iconic">
+            <img class="iconic" src="src/assets/Logo.svg" alt="Image" srcset=""/>
+          </span>
+        Login
+        </h2>
       </header>
         <div class="input-box">
           <fa class="l-con" icon="envelope"></fa>
-          <input id="email" v-model="email" type="text" placeholder=" " required>
+          <input id="email" v-model="email" type="text" placeholder="" required>
           <label for="email" >Email</label>
         </div>
         <div class ="input-box">
           <fa class="l-con" icon="lock"></fa>
-          <input id="password" v-model="password" type="password" placeholder=" " required>
+          <input id="password" v-model="password" type="password" placeholder="" required>
           <label for="password">Password</label>
         </div>
         <div class ="forget">
@@ -25,8 +30,8 @@
         </div>
       </div>
     </div>
-    </section>
-  </template>
+  </section>
+</template>
 
 <script setup>
 import { loginAuthentication } from './js/login.js'
