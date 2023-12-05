@@ -1,4 +1,5 @@
 <template>
+  <div class="Spacer">
   <div id="main-content" v-motion-slide-top>
     <div id="calc">
     <main :fullscreen="true">
@@ -29,6 +30,7 @@
         </div>
       </main>
     </div>
+  </div>
   </div>
 </template>
   

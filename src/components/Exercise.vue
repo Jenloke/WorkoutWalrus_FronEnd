@@ -32,6 +32,7 @@ const selected = ref('')
 </script>
 
 <template>
+  <div class="Spacer">  
     <div id="main-content" v-motion-slide-top>
       <div class="h-exer">
       <div class="exer">
@@ -107,5 +108,6 @@ const selected = ref('')
       </main>
       </div>
     </div>
+  </div>
   </div>
 </template>

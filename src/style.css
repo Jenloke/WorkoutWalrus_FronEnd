@@ -184,12 +184,12 @@ box-shadow: -15px 18px #fff;
   position: relative;
   background:rgba(255, 255, 255, 0.4);
   align-items: center;
-  margin-top:1.5em;
+  margin-top:2.5em;
   margin-left: 1.5em;
   margin-right: 1.5em;
   margin-bottom: auto;
   padding:2em;
-  width: inherit;
+  width: 500px;
   border-radius: 30px;
   box-shadow: 0px 8px 10px rgb(0, 0, 0);
   height:90%;
@@ -228,6 +228,7 @@ box-shadow: -15px 18px #fff;
   display: flexbox;
   text-align: center;
   font-weight: 500;
+  margin: .5em;
 }
 
 #UserInfo li{
@@ -252,16 +253,23 @@ box-shadow: -15px 18px #fff;
   border: none;
   background-color: cornflowerblue;
   color: white;
-  padding: 16px 32px;
+  padding: 10px;
   text-align: center;
   text-decoration: none;
   font-size: 16px;
   margin: 4px 2px;
-  margin-left: 25%;
   transition-duration: 0.4s;
   cursor: pointer;
-  width: 50%;
+  text-align: center;
+  width: 25%;
   z-index: 1;
+  box-shadow:0px 5px 10px rgba(0, 0, 0, 0.7);
+}
+
+.center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #recent-Act{
@@ -701,3 +709,13 @@ input::placeholder{
   right:0;
 }
 /* End of Register/Login */
+
+
+.Spacer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding-left: 10%;
+  padding-right: 10%;
+}
