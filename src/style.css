@@ -716,6 +716,7 @@ input::placeholder{
   justify-content: center;
   align-items: center;
   width: 100%;
+  margin-top: 4em;
   padding-left: 10%;
   padding-right: 10%;
 }
