@@ -5,13 +5,13 @@
 }
 
 .ww-header{
-  position: static;
+  position: fixed;
   padding-left: 50px;
 
 }
 
 .ww-logo{
-  position: static;
+  position: fixed;
   top:0;
   padding-left: 20px;
   width: 100%;
@@ -184,12 +184,12 @@ box-shadow: -15px 18px #fff;
   position: relative;
   background:rgba(255, 255, 255, 0.4);
   align-items: center;
-  margin-top:1.5em;
+  margin-top:2.5em;
   margin-left: 1.5em;
   margin-right: 1.5em;
   margin-bottom: auto;
   padding:2em;
-  width: inherit;
+  width: 500px;
   border-radius: 30px;
   box-shadow: 0px 8px 10px rgb(0, 0, 0);
   height:90%;
@@ -197,11 +197,6 @@ box-shadow: -15px 18px #fff;
   backdrop-filter: blur(2px);
 }
 
-.user h1{
-  display:flex;
-  justify-content: center;
-  font-weight: bold;
-}
 
 #pfp{
   display: flex;
@@ -210,9 +205,6 @@ box-shadow: -15px 18px #fff;
   margin:auto
 }
 
-button{
-  z-index: 1;
-}
 
 #UserInfo{
   display: flexbox;
@@ -236,6 +228,7 @@ button{
   display: flexbox;
   text-align: center;
   font-weight: 500;
+  margin: .5em;
 }
 
 #UserInfo li{
@@ -260,16 +253,23 @@ button{
   border: none;
   background-color: cornflowerblue;
   color: white;
-  padding: 16px 32px;
+  padding: 10px;
   text-align: center;
   text-decoration: none;
   font-size: 16px;
   margin: 4px 2px;
-  margin-left: 25%;
   transition-duration: 0.4s;
   cursor: pointer;
-  width: 50%;
+  text-align: center;
+  width: 25%;
   z-index: 1;
+  box-shadow:0px 5px 10px rgba(0, 0, 0, 0.7);
+}
+
+.center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #recent-Act{
@@ -292,13 +292,191 @@ button{
 /* End of Home */
 
 /* Exercise */
+.h-exer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.exer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  background-color: #fff;
+  width: 300px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.7);
+}
 
+.exer h1{
+  padding:.5em;
+}
+
+.exer .selection{
+  padding: 10px;
+  width: 100%;
+
+}
+
+.exer main{
+  padding: 1em;
+  width: 100%;
+  text-align: center;
+}
+
+.exer .selection select{
+  padding: 2px;
+  width: 100%;
+  height: 50px;
+  font-size: 15px;
+  color: #fff;
+  border-radius: 10px;
+  background: cornflowerblue;
+  text-align: center;
+  border:none;
+  margin-bottom: 10px;
+  font-weight: bold;
+  letter-spacing: .09em;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
+}
+
+.exer .selection select option{
+  background-color: white;
+  color: cornflowerblue;
+  border: none;
+  outline: none;
+}
+
+.exer button{
+  padding: 0.5em;
+  width: 80%;
+  border-radius: 20px;
+  outline: none;
+  border:none;
+  background: orange;
+  color: whitesmoke;
+  font-weight: bolder;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
+}
+
+.h-exer .exer .n-exer p{
+  margin-top: 10px;
+  height: 10px;
+  padding:0.5em;
+  font-size: 15px;
+}
+
+.h-exer ul{
+  list-style: none;
+  padding: 10px;
+}
+
+.h-exer ul li{
+  background-color: antiquewhite;
+  margin: 0.5em;
+  list-style: none;
+  padding: .25em;
+  font-weight:bolder;
+  letter-spacing: .07em;
+  height: 2em;
+  border-radius: 10px;
+}
+
+.h-exer ul p{
+  padding: .25em;
+  color: cornflowerblue;
+  font-weight:bolder;
+}
 
 /* End of Exercise */
 
 /* Calculator */
+header{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  line-height: 40px;
+  font-size: larger;
+  text-shadow:1px 1px  #ffffff;
+}
 
+.c-heading{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 75px;
+}
 
+.c-heading h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  margin-top: 10px;
+  background: white;
+  border-top-right-radius:20px;
+  border-top-left-radius:20px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.9);
+}
+
+#c-listed{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  
+}
+
+#c-listed ul{
+  list-style: none;
+  padding: 1.5em;
+  width: 300px;
+  background-color: #fff;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.9);
+}
+
+#c-listed ul li select{
+  width: 100%;
+  padding: .5em;
+  text-align: center;
+  font-size: large;
+  font-weight: 600;
+  border-radius: 10px;
+  background: cornflowerblue;
+  color: white;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.9);
+}
+
+#c-listed ul li select option{
+  background: white;
+  color: cornflowerblue;
+  padding: 10px;
+}
+
+#c-listed button{
+  width: 100%;
+  margin-top: 2em;
+  height: 3em;
+  border-radius: 10px;
+  background: orange;
+  border:none;
+  outline: none;
+  font-size: large;
+  font-weight: bold;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.9);
+}
+
+#c-listed h2{
+  padding-top: 2em;
+  width: 100%;
+  text-align: center;
+  font-weight:400;
+}
 /* End of Calculator */
 
 /* Register/Login */
@@ -432,7 +610,7 @@ margin: 25px 0 10px;
 #reg{
   display: flex;
   justify-content: center;
-  margin-top: 3em;
+  align-items: center;
   min-height: 100vh;
   width: 100%;
 }
@@ -531,3 +709,14 @@ input::placeholder{
   right:0;
 }
 /* End of Register/Login */
+
+
+.Spacer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 4em;
+  padding-left: 10%;
+  padding-right: 10%;
+}

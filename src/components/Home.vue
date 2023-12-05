@@ -55,6 +55,7 @@ export default {
 </script>
 
 <template>
+  <div class="Spacer">
   <div  id="main-content" v-motion-slide-top>
     <header class="user">
         <h1 >{{ userData.username }}</h1>
@@ -62,8 +63,8 @@ export default {
     </header>
     <main>
       <div id="UserInfo" v-motion-slide-top>
-      <h1>User Information</h1>
-        <p>{{ userData.name }}</p>
+      <h1>{{ userData.name }}</h1>
+        <p>User Information</p>
         <ul lines="none" :inset="true">
           <li>
             <span class="wlabel">Height: {{ heightLabel }}cm</span>
@@ -93,6 +94,7 @@ export default {
         </ul>
       </div>
     </main>
+  </div>
   </div>
 </template>
   

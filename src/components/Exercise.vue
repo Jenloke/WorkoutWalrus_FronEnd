@@ -36,7 +36,10 @@ function callexercise() {
 </script>
 
 <template>
+  <div class="Spacer">  
     <div id="main-content" v-motion-slide-top>
+      <div class="h-exer">
+      <div class="exer">
       <header>
           <h1>
             Exercise
@@ -44,8 +47,8 @@ function callexercise() {
       </header>
 
       <main>
-        <div>
-          <select v-model="selectedType">
+        <div class="selection">
+          <select v-model="selectedType" @change="console.log(selectedType)">
             <option disabled value="" selected>Select an option</option>
             <option v-for="type in types" :value="type.value"> 
               {{ type.name }}
@@ -83,12 +86,9 @@ function callexercise() {
           Generate Exercise
         </button> -->
           
-        <p>
-          {{ selectedType }} - {{ selectedMuscle }} - {{ selecteDifficulty }}
-        </p>
-        <p> {{ getExercise }}</p>
-        <div v-if="exeList.length === 0">
-          <p>No Exercise Based on Selected Options</p>
+        <div class="n-exer" v-if="!select">
+          <p>No Exercise</p>
+          <p>{{ selectedType }} - {{ selectedMuscle }} - {{ selecteDifficulty }}</p>
         </div>
         <ul v-else>
           <li v-for="e in getExercise">
@@ -97,5 +97,8 @@ function callexercise() {
         </ul>
   
       </main>
+      </div>
     </div>
-  </template>
+  </div>
+  </div>
+</template>
