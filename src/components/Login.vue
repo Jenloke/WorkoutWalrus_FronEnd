@@ -12,12 +12,12 @@
       </header>
         <div class="input-box">
           <fa class="l-con" icon="envelope"></fa>
-          <input id="email" v-model="email" type="text" placeholder="" required>
+          <input id="email" v-model="email" type="text" placeholder=" " required>
           <label for="email" >Email</label>
         </div>
         <div class ="input-box">
           <fa class="l-con" icon="lock"></fa>
-          <input id="password" v-model="password" type="password" placeholder="" required>
+          <input id="password" v-model="password" type="password" placeholder=" " required>
           <label for="password">Password</label>
         </div>
         <div class ="forget">

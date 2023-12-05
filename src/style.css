@@ -339,7 +339,8 @@ font-weight: 600;
   transition:.5s;
 }
 
-.login-content input:focus ~ label, input:not(:placeholder-shown) ~ label{
+.login-content .input-box input:focus ~ label,
+.login-content .input-box input:not(:placeholder-shown) ~ label{
 top:10px;
 }
 
@@ -464,8 +465,20 @@ margin: 25px 0 10px;
   font-size: 16px;
 }
 
-.register-content .input-box label{
+.register-content .input-box label {
+  position: absolute;
+  top: 50%; 
+  left: 5px;
+  transform: translateY(-50%);
   color: white;
+  font-size: 1em;
+  pointer-events: none;
+  transition: 0.5s;
+}
+
+.register-content .input-box input:focus ~ label,
+.register-content .input-box input:not(:placeholder-shown) ~ label {
+  top: -10px; 
 }
 
 input::placeholder{
@@ -505,7 +518,7 @@ input::placeholder{
 .input-box .r-con{
   position: absolute;
   color: #fff;
-  top: 13px;
+  top: 5px;
   right:0;
 }
 /* End of Register/Login */

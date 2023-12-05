@@ -12,35 +12,35 @@
       </header>
         <div class="input-box">
           <fa class="r-con" icon="envelope"></fa>
-          <label for="email">Email</label>
           <input id="email" v-model="email" type="text" placeholder="" required>
+          <label for="email">Email</label>
         </div>
         <div class="input-box">
           <fa class="r-con" icon="lock"></fa>
-          <label for="password">Password</label>
           <input id="password" v-model="password" type="password" placeholder="" required>
+          <label for="password">Password</label>
         </div>
         <div class="input-box">
           <fa class="r-con" icon="user"></fa>
-          <label for="username">Username</label>
           <input id="username" v-model="username" type="text" placeholder="" required>
+          <label for="username">Username</label>
         </div>
         <div class="input-box">
           <fa class="r-con" icon="user"></fa>
-          <label for="name">Full Name</label>
           <input id="name" v-model="name" type="text" placeholder="" required>
+          <label for="name">Full Name</label>
         </div>
         <div class="input-box">
-          <label for="birthday">Birthday</label>
           <input id="birthday" v-model="birthday" type="date" placeholder="" required>
+          <label for="birthday">Birthday</label>
         </div>
         <div class="input-box">
-          <label for="height">Height</label>
-          <input id="height" v-model="height" type="number" placeholder="" required>
+          <input id="height" v-model="height" type="number" placeholder=" " required>
+          <label for="height">Height (cm)</label>
         </div>
         <div class="input-box">
-          <label for="weight">Weight</label>
-          <input id="weight" v-model="weight" type="number" placeholder="" required>
+          <input id="weight" v-model="weight" type="number" placeholder=" " required>
+          <label for="weight">Weight (kg)</label>
         </div>
 
         <button id="r-button" @click="signUp">Register</button>
