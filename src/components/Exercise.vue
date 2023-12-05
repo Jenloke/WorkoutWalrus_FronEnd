@@ -33,6 +33,8 @@ const selected = ref('')
 
 <template>
     <div id="main-content" v-motion-slide-top>
+      <div class="h-exer">
+      <div class="exer">
       <header>
           <h1>
             Exercise
@@ -44,7 +46,7 @@ const selected = ref('')
       </div>
 
       <main>
-        <div>
+        <div class="selection">
           <select v-model="selectedType" @change="console.log(selectedType)">
             <option disabled value="" selected>Select an option</option>
             <option v-for="type in types" :value="type.value"> 
@@ -79,7 +81,7 @@ const selected = ref('')
           Generate Exercise
         </button> -->
           
-        <div v-if="!select">
+        <div class="n-exer" v-if="!select">
           <p>No Exercise</p>
           <p>{{ selectedType }} - {{ selectedMuscle }} - {{ selecteDifficulty }}</p>
         </div>
@@ -103,5 +105,7 @@ const selected = ref('')
         </ul>
   
       </main>
+      </div>
     </div>
-  </template>
+  </div>
+</template>
