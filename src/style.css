@@ -5,13 +5,13 @@
 }
 
 .ww-header{
-  position: static;
+  position: fixed;
   padding-left: 50px;
 
 }
 
 .ww-logo{
-  position: static;
+  position: fixed;
   top:0;
   padding-left: 20px;
   width: 100%;
