@@ -1,6 +1,6 @@
 <template>
   <section id="logged">
-    <div id="login">
+    <div id="login" v-motion-slide-top>
       <div class="login-content">
       <header>
         <h2>

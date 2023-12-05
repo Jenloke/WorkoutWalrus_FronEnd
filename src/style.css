@@ -33,11 +33,13 @@
 body
 {
   display: flexbox;
+  margin: auto;
+  align-items: center;
   background: cornflowerblue;
   background-image:url(./assets/background.svg);
-  background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  padding: auto;
 }
 
 .navigation
@@ -68,7 +70,9 @@ body
   position: relative;
   width: 116px;
   height: 60px;
-  z-index: 2;
+  
+  z-index: 1;
+
   }
 
 .navigation ul li a 
@@ -128,6 +132,7 @@ color:cornflowerblue;
   background: white;
   border-radius: 30px;
   transition: 0.5s;
+  z-index: 0;
 }
 
 .indicator::before
@@ -178,17 +183,17 @@ box-shadow: -15px 18px #fff;
   justify-content: center;
   position: relative;
   background:rgb(215, 228, 255);
-  top: 50px;
-  margin-top:30px;
+  align-items: center;
+  margin-top:100px;
   margin-left: 1.5em;
   margin-right: 1.5em;
-  margin-bottom: 100px;
-  padding:5em;
+  margin-bottom: auto;
+  padding:2em;
   width: inherit;
   border-radius: 30px;
   box-shadow: 0px 8px rgb(74, 115, 191);
-  height:90%;
-  z-index: -1;
+  height:80%;
+  z-index: 0;
 }
 
 .user h1{
@@ -206,10 +211,10 @@ box-shadow: -15px 18px #fff;
 
 #UserInfo{
   display: flexbox;
+  position: a;
   justify-content: center;
   align-items: center;
   background: white;
-  transform: translate(-50%,-50%);
   padding: 20px;
   margin: 10px;
   border-radius: 20px;
@@ -259,6 +264,7 @@ box-shadow: -15px 18px #fff;
   transition-duration: 0.4s;
   cursor: pointer;
   width: 50%;
+  z-index: 0;
 }
 
 #recent-Act{
@@ -430,7 +436,7 @@ margin: 25px 0 10px;
   position: absolute;
   top: 90px;
   width: 400px;
-  height: 85%;
+  height: 75%;
   background:transparent;
   /* background:rgb(57, 189, 222); */
   border: 2px solid rgba(255,255,255,0.5);

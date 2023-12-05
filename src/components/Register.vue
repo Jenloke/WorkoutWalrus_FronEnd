@@ -1,6 +1,6 @@
 <template>
   <section id="reg">
-    <div id="register">
+    <div id="register" v-motion-slide-top>
       <div class="register-content">
       <header>
         <h2>

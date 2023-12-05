@@ -1,5 +1,5 @@
 <template>
-  <div id="main-content" v-motion-slide-right>
+  <div id="main-content" v-motion-slide-top>
     <main :fullscreen="true">
       <header collapse="condense">
         <h1 size="large">Tab 3</h1>
