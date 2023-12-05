@@ -4,30 +4,34 @@ import { types } from '../selection/typesExercise';
 import { muscles } from '../selection/musclesExercise';
 import { difficulties } from '../selection/difficultiesExercise';
 
-const paraExe = [ '', '', ''];
-
 const selectedType = ref('')
 let selectedMuscle = ref('')
 let selecteDifficulty = ref("")
 
-let select = ref(false)
+// const select = ref(false)
+let exeList = ref([])
 
-function display(x) {
-  console.log(x)
+import * as Realm from "realm-web";
+const app = Realm.getApp("workout_final-jogzu");
+
+const getExercise = ref(callexercise())
+  
+function callexercise() {
+  try {
+    const mongodb = app.currentUser.mongoClient('mongodb-atlas')
+    const collection = mongodb.db('workoutwalrus').collection('exercises')
+    return collection.find({
+      'type': selectedType.value,
+      'muscle': selectedMuscle.value,
+      'difficulty': selecteDifficulty.value
+    })
+  } 
+  catch(err) {
+    console.log('failed', err)
+  }
 }
 
-// async function getExercise(url) {
-//   const response = await fetch(url, {
-//     headers: {
-//       'X-Api-Key': 'H2hjF7GM2NnHzuZTm5Nakw==cnVmqdsMHbfV8EVb'
-//     }
-//   });
-//   console.log(response.json());
-//   // return response.json();
-// }
-
-const selected = ref('')
-
+// console.log(getExercise)
 
 </script>
 
@@ -39,13 +43,9 @@ const selected = ref('')
           </h1>
       </header>
 
-      <div>
-        {{ selected }}
-      </div>
-
       <main>
         <div>
-          <select v-model="selectedType" @change="console.log(selectedType)">
+          <select v-model="selectedType">
             <option disabled value="" selected>Select an option</option>
             <option v-for="type in types" :value="type.value"> 
               {{ type.name }}
@@ -71,34 +71,28 @@ const selected = ref('')
           </select>
         </div>
         
-        <button @click="select = !select">
+        <!-- <button @click="select = !select"> -->
+        <button  @click=getExercise>
           Generate Exercise
         </button>
 
+        <button @click="console.log(exeList)">
+          ASd
+        </button>
         <!-- <button @click="getExercise(`https://api.api-ninjas.com/v1/exercises?type=${paraExe[0]}&?difficulty${paraExe[2]}`)"> 
           Generate Exercise
         </button> -->
           
-        <div v-if="!select">
-          <p>No Exercise</p>
-          <p>{{ selectedType }} - {{ selectedMuscle }} - {{ selecteDifficulty }}</p>
+        <p>
+          {{ selectedType }} - {{ selectedMuscle }} - {{ selecteDifficulty }}
+        </p>
+        <p> {{ getExercise }}</p>
+        <div v-if="exeList.length === 0">
+          <p>No Exercise Based on Selected Options</p>
         </div>
         <ul v-else>
-          <p>{{ selectedType }} - {{ selectedMuscle }} - {{ selecteDifficulty }}</p>
-          <li>
-            <label>Push-ups</label>
-          </li>
-          <li>
-            <label>Sit-ups</label>
-          </li>
-          <li>
-            <label>Lunges</label>
-          </li>
-          <li>
-            <label>Squats</label>
-          </li>
-          <li>
-            <label>Plank</label>
+          <li v-for="e in getExercise">
+            {{ e.name }} - {{ e.muscle }} - {{ e.difficulty }}
           </li>
         </ul>
   
