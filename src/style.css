@@ -307,10 +307,11 @@ box-shadow: -15px 18px #fff;
   /* background:rgb(57, 189, 222); */
   border: 2px solid rgba(255,255,255,0.5);
   border-radius: 20px;
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(15px);
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow:3px 3px 10px rgb(22, 53, 110);
 }
 
 .login-content h2{
@@ -433,10 +434,11 @@ margin: 25px 0 10px;
   /* background:rgb(57, 189, 222); */
   border: 2px solid rgba(255,255,255,0.5);
   border-radius: 20px;
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(15px);
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow:3px 3px 10px rgb(22, 53, 110);
 }
 
 .register-content h2{
@@ -506,6 +508,4 @@ input::placeholder{
   top: 13px;
   right:0;
 }
-
-
 /* End of Register/Login */
