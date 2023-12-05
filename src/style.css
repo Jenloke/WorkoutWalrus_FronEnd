@@ -20,7 +20,7 @@
   background: white;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
-  box-shadow:0 10px rgb(74, 115, 191);
+  box-shadow:0 10px 10px rgb(0, 0, 0);
 }
 
 *{
@@ -32,14 +32,12 @@
 
 body
 {
-  display: flexbox;
-  margin: auto;
-  align-items: center;
   background: cornflowerblue;
-  background-image:url(./assets/background.svg);
+  background-image:url(./assets/Background.jpg);
   background-position: center;
-  background-size: cover;
-  padding: auto;
+  /* background-repeat: no-repeat;
+  background-size: cover; */
+  background-attachment: fixed;
 }
 
 .navigation
@@ -182,7 +180,7 @@ box-shadow: -15px 18px #fff;
   display: flexbox;
   justify-content: center;
   position: relative;
-  background:rgb(215, 228, 255);
+  background:rgba(255, 255, 255, 0.4);
   align-items: center;
   margin-top:100px;
   margin-left: 1.5em;
@@ -191,9 +189,10 @@ box-shadow: -15px 18px #fff;
   padding:2em;
   width: inherit;
   border-radius: 30px;
-  box-shadow: 0px 8px rgb(74, 115, 191);
-  height:80%;
-  z-index: 0;
+  box-shadow: 0px 8px 10px rgb(0, 0, 0);
+  height:90%;
+  z-index: 1;
+  backdrop-filter: blur(2px);
 }
 
 .user h1{
@@ -218,7 +217,7 @@ box-shadow: -15px 18px #fff;
   padding: 20px;
   margin: 10px;
   border-radius: 20px;
-  box-shadow: 0 5px rgb(151, 175, 221);
+  box-shadow: 0 5px 2px rgb(0, 0, 0);
 }
 
 #UserInfo h1{
@@ -276,7 +275,7 @@ box-shadow: -15px 18px #fff;
   padding: 0.25em;
   margin: 10px;
   border-radius: 20px;
-  box-shadow: 0 5px rgb(151, 175, 221);
+  box-shadow: 0 5px 2px rgb(0, 0, 0);
 }
 
 #recent-Act ul{
@@ -317,7 +316,7 @@ box-shadow: -15px 18px #fff;
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow:3px 3px 10px rgb(22, 53, 110);
+  box-shadow:3px 3px 10px rgb(0, 0, 0);
 }
 
 .login-content h2{
@@ -445,7 +444,7 @@ margin: 25px 0 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow:3px 3px 10px rgb(22, 53, 110);
+  box-shadow:3px 3px 10px rgb(0, 0, 0);
 }
 
 .register-content h2{
