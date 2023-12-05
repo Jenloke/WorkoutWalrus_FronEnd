@@ -5,13 +5,13 @@
 }
 
 .ww-header{
-  position: absolute;
+  position: static;
   padding-left: 50px;
 
 }
 
 .ww-logo{
-  position: absolute;
+  position: static;
   top:0;
   padding-left: 20px;
   width: 100%;
@@ -26,6 +26,7 @@
 *{
   margin: 0;
   padding: 0;
+
   box-sizing: border-box;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
@@ -93,6 +94,7 @@ body
   font-size:1.5em;
   transition: 0.5s;
   color: #3d3d3d;
+  top: -12px;
 }
 
 .navigation ul li.active a .icon{
@@ -117,7 +119,7 @@ color:cornflowerblue;
 
 .navigation ul li.active a .text
 {
-  transform: translateY(-4px);
+  transform: translateY(-12px);
   opacity: 1;
 }
 
@@ -126,7 +128,7 @@ color:cornflowerblue;
   position: absolute;
   top: -50%;
   width: 116px;
-  height: 70px;
+  height: 100px;
   background: white;
   border-radius: 30px;
   transition: 0.5s;
@@ -182,7 +184,7 @@ box-shadow: -15px 18px #fff;
   position: relative;
   background:rgba(255, 255, 255, 0.4);
   align-items: center;
-  margin-top:100px;
+  margin-top:1.5em;
   margin-left: 1.5em;
   margin-right: 1.5em;
   margin-bottom: auto;
@@ -191,7 +193,7 @@ box-shadow: -15px 18px #fff;
   border-radius: 30px;
   box-shadow: 0px 8px 10px rgb(0, 0, 0);
   height:90%;
-  z-index: 1;
+  z-index: 0;
   backdrop-filter: blur(2px);
 }
 
@@ -206,6 +208,10 @@ box-shadow: -15px 18px #fff;
   justify-content: center;
   text-align: center;
   margin:auto
+}
+
+button{
+  z-index: 1;
 }
 
 #UserInfo{
@@ -263,7 +269,7 @@ box-shadow: -15px 18px #fff;
   transition-duration: 0.4s;
   cursor: pointer;
   width: 50%;
-  z-index: 0;
+  z-index: 1;
 }
 
 #recent-Act{
@@ -308,11 +314,11 @@ box-shadow: -15px 18px #fff;
   position: absolute;
   width: 400px;
   height: 450px;
-  background:transparent;
+  background:rgba(0, 0, 0, 0.1);
   /* background:rgb(57, 189, 222); */
   border: 2px solid rgba(255,255,255,0.5);
   border-radius: 20px;
-  backdrop-filter: blur(15px);
+  backdrop-filter: blur(5px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -426,18 +432,16 @@ margin: 25px 0 10px;
 #reg{
   display: flex;
   justify-content: center;
-  align-items: center;
+  margin-top: 3em;
   min-height: 100vh;
   width: 100%;
 }
 
 #register{
-  position: absolute;
-  top: 90px;
+  position: relative;
   width: 400px;
-  height: 75%;
-  background:transparent;
-  /* background:rgb(57, 189, 222); */
+  height: 650px;
+  background:rgba(0, 0, 0, 0.1);
   border: 2px solid rgba(255,255,255,0.5);
   border-radius: 20px;
   backdrop-filter: blur(15px);

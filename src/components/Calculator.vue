@@ -2,7 +2,7 @@
   <div id="main-content" v-motion-slide-top>
     <main :fullscreen="true">
       <header collapse="condense">
-        <h1 size="large">Tab 3</h1>
+        <h1 size="large">Calorie Tracker</h1>
       </header>
         <h1>
           Exercise calculator
