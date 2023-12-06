@@ -9,30 +9,36 @@ let selectedMuscle = ref('')
 let selecteDifficulty = ref("")
 
 // const select = ref(false)
-let exeList = ref([])
+const exeList = ref([])
 
-import * as Realm from "realm-web";
-const app = Realm.getApp("workout_final-jogzu");
+// const getExerciseApi = ref(callexercise())
+// import * as Realm from "realm-web";
+// const app = Realm.getApp("workout_final-jogzu");
+// async function callexercise() {
+//   try {
+//     const mongodb = app.currentUser.mongoClient('mongodb-atlas')
+//     const collection = mongodb.db('workoutwalrus').collection('exercises')
+//     exeList.value =  await collection.find({
+//       'type': selectedType.value,
+//       'muscle': selectedMuscle.value,
+//       'difficulty': selecteDifficulty.value
+//     }).json()
+//   } 
+//   catch(err) {
+//     console.log('failed', err)
+//   }
+// }
 
-const getExercise = ref(callexercise())
-  
-function callexercise() {
-  try {
-    const mongodb = app.currentUser.mongoClient('mongodb-atlas')
-    const collection = mongodb.db('workoutwalrus').collection('exercises')
-    return collection.find({
-      'type': selectedType.value,
-      'muscle': selectedMuscle.value,
-      'difficulty': selecteDifficulty.value
-    })
-  } 
-  catch(err) {
-    console.log('failed', err)
-  }
+const urlApi = ref(`https://api.api-ninjas.com/v1/exercises?type=${selectedType.value}&?muscle=${selectedMuscle.value}&?difficulty${selecteDifficulty.value}`)
+async function getExerciseApi(url) {
+  const response = await fetch(url, {
+    headers: {
+      'X-Api-Key': 'H2hjF7GM2NnHzuZTm5Nakw==cnVmqdsMHbfV8EVb'
+    }
+  });
+  // console.log(typeof(response.json()));
+  exeList.value = await response.json();
 }
-
-// console.log(getExercise)
-
 </script>
 
 <template>
@@ -48,7 +54,7 @@ function callexercise() {
 
       <main>
         <div class="selection">
-          <select v-model="selectedType" @change="console.log(selectedType)">
+          <select v-model="selectedType">
             <option disabled value="" selected>Select an option</option>
             <option v-for="type in types" :value="type.value"> 
               {{ type.name }}
@@ -75,24 +81,22 @@ function callexercise() {
         </div>
         
         <!-- <button @click="select = !select"> -->
-        <button  @click=getExercise>
-          Generate Exercise
-        </button>
-
-        <button @click="console.log(exeList)">
-          ASd
-        </button>
-        <!-- <button @click="getExercise(`https://api.api-ninjas.com/v1/exercises?type=${paraExe[0]}&?difficulty${paraExe[2]}`)"> 
-          Generate Exercise
+        <!-- <button  @click="callexercise()">
+          Generate Exercise MongoDB
         </button> -->
+
+        <button @click="getExerciseApi(urlApi)">
+          Generate Exercise
+        </button>
           
-        <div class="n-exer" v-if="!select">
+        <div class="n-exer" v-if="exeList.length === 0">
           <p>No Exercise</p>
           <p>{{ selectedType }} - {{ selectedMuscle }} - {{ selecteDifficulty }}</p>
         </div>
         <ul v-else>
-          <li v-for="e in getExercise">
-            {{ e.name }} - {{ e.muscle }} - {{ e.difficulty }}
+          <!-- <p> {{ exeList }}</p> -->
+          <li v-for="exercise in exeList">
+            <button>{{ exercise.name }}</button>
           </li>
         </ul>
   
