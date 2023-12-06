@@ -6,9 +6,8 @@ import { difficulties } from '../selection/difficultiesExercise';
 
 const selectedType = ref('')
 let selectedMuscle = ref('')
-let selecteDifficulty = ref("")
+let selecteDifficulty = ref('')
 
-// const select = ref(false)
 const exeList = ref([])
 
 // const getExerciseApi = ref(callexercise())
@@ -79,11 +78,6 @@ async function getExerciseApi(url) {
             </option>
           </select>
         </div>
-        
-        <!-- <button @click="select = !select"> -->
-        <!-- <button  @click="callexercise()">
-          Generate Exercise MongoDB
-        </button> -->
 
         <button @click="getExerciseApi(urlApi)">
           Generate Exercise
@@ -94,7 +88,6 @@ async function getExerciseApi(url) {
           <p>{{ selectedType }} - {{ selectedMuscle }} - {{ selecteDifficulty }}</p>
         </div>
         <ul v-else>
-          <!-- <p> {{ exeList }}</p> -->
           <li v-for="exercise in exeList">
             <button>{{ exercise.name }}</button>
           </li>
