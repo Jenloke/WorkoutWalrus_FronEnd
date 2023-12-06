@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, onUpdated } from 'vue';
 import { types } from '../selection/typesExercise';
 import { muscles } from '../selection/musclesExercise';
 import { difficulties } from '../selection/difficultiesExercise';
@@ -7,8 +7,6 @@ import { difficulties } from '../selection/difficultiesExercise';
 const selectedType = ref('')
 let selectedMuscle = ref('')
 let selecteDifficulty = ref('')
-
-const exeList = ref([])
 
 // const getExerciseApi = ref(callexercise())
 // import * as Realm from "realm-web";
@@ -28,16 +26,46 @@ const exeList = ref([])
 //   }
 // }
 
-const urlApi = ref(`https://api.api-ninjas.com/v1/exercises?type=${selectedType.value}&?muscle=${selectedMuscle.value}&?difficulty${selecteDifficulty.value}`)
-async function getExerciseApi(url) {
-  const response = await fetch(url, {
-    headers: {
-      'X-Api-Key': 'H2hjF7GM2NnHzuZTm5Nakw==cnVmqdsMHbfV8EVb'
-    }
-  });
-  // console.log(typeof(response.json()));
-  exeList.value = await response.json();
+const exeList = ref({})
+
+let call = 0
+
+let urlApi = ref(`https://api.api-ninjas.com/v1/exercises?type=${selectedType.value}&?muscle=${selectedMuscle.value}&?difficulty${selecteDifficulty.value}`)
+
+onUpdated(() => {
+  urlApi = `https://api.api-ninjas.com/v1/exercises?type=${selectedType.value}&?muscle=${selectedMuscle.value}&?difficulty${selecteDifficulty.value}`
+})
+
+// async function getExerciseApi(url = urlApi) {
+//   call++
+//   console.log(call)
+//   const response = await fetch(url, {
+//     headers: {
+//       'X-Api-Key': 'H2hjF7GM2NnHzuZTm5Nakw==cnVmqdsMHbfV8EVb'
+//     }
+//   }).then;
+//   console.log(response)
+//   return await response.json();
+// }
+
+import axios from 'axios'
+async function fetchData(url) {
+  try {
+    const response = await axios.get(url, {
+      headers: {
+        'X-Api-Key': 'H2hjF7GM2NnHzuZTm5Nakw==cnVmqdsMHbfV8EVb'
+      }
+    }).then( (response) => {
+      // exeList.value.splice(0, exeList.value.length)
+      console.log(response.data)
+      // return response.data 
+      exeList.value = response.data
+    });
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
 }
+
 </script>
 
 <template>
@@ -79,17 +107,18 @@ async function getExerciseApi(url) {
               </select>
             </div>
 
-            <button @click="getExerciseApi(urlApi)">
+            <button @click="fetchData(urlApi)"> 
               Generate Exercise
             </button>
               
-            <div class="n-exer" v-if="exeList.length === 0">
+            <div v-if="exeList.length === 0" class="n-exer">
               <p>No Exercise</p>
               <p>{{ selectedType }} - {{ selectedMuscle }} - {{ selecteDifficulty }}</p>
             </div>
+
             <ul v-else>
-              <li v-for="exercise in exeList">
-                <button>{{ exercise.name }}</button>
+              <li v-for="exer in exeList" :value="exer.name">
+                <button @click="console.log(exer.name)">{{ exer.name }} </button>
               </li>
             </ul>
   

@@ -13,6 +13,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.5.1",
     "@fortawesome/vue-fontawesome": "^3.0.0-5",
     "@vueuse/motion": "^2.0.0",
+    "axios": "^1.6.2",
     "realm-web": "^2.0.0",
     "vue": "^3.3.8",
     "vue-router": "^4.2.5"
