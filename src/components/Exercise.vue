@@ -44,58 +44,58 @@ async function getExerciseApi(url) {
   <div class="Spacer">  
     <div id="main-content" v-motion-slide-top>
       <div class="h-exer">
-      <div class="exer">
-      <header>
-          <h1>
-            Exercise
-          </h1>
-      </header>
+        <div class="exer">
+          <header>
+            <h1>
+              Exercise
+            </h1>
+          </header>
 
-      <main>
-        <div class="selection">
-          <select v-model="selectedType">
-            <option disabled value="" selected>Select an option</option>
-            <option v-for="type in types" :value="type.value"> 
-              {{ type.name }}
-            </option>
-          </select>
+          <main>
+            <div class="selection">
+              <select v-model="selectedType">
+                <option disabled value="" selected>Select an option</option>
+                <option v-for="type in types" :value="type.value"> 
+                  {{ type.name }}
+                </option>
+              </select>
 
-          <br>
+              <br>
 
-          <select v-model="selectedMuscle">
-            <option disabled value="" selected>Select an option</option>
-            <option v-for="muscle in muscles" :value="muscle.value"> 
-              {{ muscle.name }}
-            </option>
-          </select>
-          
-          <br>
+              <select v-model="selectedMuscle">
+                <option disabled value="" selected>Select an option</option>
+                <option v-for="muscle in muscles" :value="muscle.value"> 
+                  {{ muscle.name }}
+                </option>
+              </select>
+              
+              <br>
 
-          <select v-model="selecteDifficulty">
-            <option disabled value="" selected>Select an option</option>
-            <option v-for="difficulty in difficulties" :value="difficulty.value"> 
-              {{ difficulty.name }}
-            </option>
-          </select>
-        </div>
+              <select v-model="selecteDifficulty">
+                <option disabled value="" selected>Select an option</option>
+                <option v-for="difficulty in difficulties" :value="difficulty.value"> 
+                  {{ difficulty.name }}
+                </option>
+              </select>
+            </div>
 
-        <button @click="getExerciseApi(urlApi)">
-          Generate Exercise
-        </button>
-          
-        <div class="n-exer" v-if="exeList.length === 0">
-          <p>No Exercise</p>
-          <p>{{ selectedType }} - {{ selectedMuscle }} - {{ selecteDifficulty }}</p>
-        </div>
-        <ul v-else>
-          <li v-for="exercise in exeList">
-            <button>{{ exercise.name }}</button>
-          </li>
-        </ul>
+            <button @click="getExerciseApi(urlApi)">
+              Generate Exercise
+            </button>
+              
+            <div class="n-exer" v-if="exeList.length === 0">
+              <p>No Exercise</p>
+              <p>{{ selectedType }} - {{ selectedMuscle }} - {{ selecteDifficulty }}</p>
+            </div>
+            <ul v-else>
+              <li v-for="exercise in exeList">
+                <button>{{ exercise.name }}</button>
+              </li>
+            </ul>
   
-      </main>
+          </main>
+        </div>
       </div>
     </div>
-  </div>
   </div>
 </template>
