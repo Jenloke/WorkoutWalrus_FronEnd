@@ -4,22 +4,27 @@ import { types } from '../selection/typesExercise';
 import { muscles } from '../selection/musclesExercise';
 import { difficulties } from '../selection/difficultiesExercise';
 
+
 const selectedType = ref('')
 let selectedMuscle = ref('')
 let selecteDifficulty = ref('')
 
-// const getExerciseApi = ref(callexercise())
+/* Napagana ko yung sa database. ang issue kasi eh since hindi ko nilagay LAHAT ng exercise, may mga times talaga
+   na wala siyang mage-generate na list. pero honestly at this point, kahit ano na lang gawin para sa computation
+   dun na lang tayo sa madali.   */
+
 // import * as Realm from "realm-web";
 // const app = Realm.getApp("workout_final-jogzu");
+// const getExerciseApi = ref(callexercise())
 // async function callexercise() {
 //   try {
 //     const mongodb = app.currentUser.mongoClient('mongodb-atlas')
 //     const collection = mongodb.db('workoutwalrus').collection('exercises')
-//     exeList.value =  await collection.find({
-//       'type': selectedType.value,
-//       'muscle': selectedMuscle.value,
-//       'difficulty': selecteDifficulty.value
-//     }).json()
+//     console.log("success")
+//     const query = {"type": selectedType.value,"muscle": selectedMuscle.value,"difficulty": selecteDifficulty.value}
+//     const realmResponse =  await collection.find(query)
+//     console.log(realmResponse)
+//     exeList.value = realmResponse
 //   } 
 //   catch(err) {
 //     console.log('failed', err)
@@ -116,11 +121,14 @@ async function fetchData(url) {
               <p>{{ selectedType }} - {{ selectedMuscle }} - {{ selecteDifficulty }}</p>
             </div>
 
-            <ul v-else>
+            <div v-else class="listExercise">
+              <ul>
               <li v-for="exer in exeList" :value="exer.name">
                 <button @click="console.log(exer.name)">{{ exer.name }} </button>
               </li>
             </ul>
+
+            </div>
   
           </main>
         </div>

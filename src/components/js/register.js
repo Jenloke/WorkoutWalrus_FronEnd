@@ -23,21 +23,21 @@ export const registerUser = (router) =>{
             
             const user = app.currentUser
             if(user && user.isLoggedIn){
-            const mongodb = app.currentUser.mongoClient("mongodb-atlas")
-            const collection = mongodb.db("workoutwalrus").collection("users")
-            console.log("mongo connection established")
-            
-            const response = await collection.insertOne({
-                userID: app.currentUser.id,
-                name: name.value,
-                birthday: birthday.value,
-                username: username.value,
-                height: height.value,
-                weight: weight.value,
-                totalCalBurned: 0,
-                toDo: []
-            })
-            console.log(response)
+                const mongodb = app.currentUser.mongoClient("mongodb-atlas")
+                const collection = mongodb.db("workoutwalrus").collection("users")
+                console.log("mongo connection established")
+                
+                const response = await collection.insertOne({
+                    userID: app.currentUser.id,
+                    name: name.value,
+                    birthday: birthday.value,
+                    username: username.value,
+                    height: height.value,
+                    weight: weight.value,
+                    totalCalBurned: 0,
+                    toDo: []
+                })
+                console.log(response)
             }
 
             console.log('User signed up successfully')

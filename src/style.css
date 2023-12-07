@@ -187,7 +187,7 @@ box-shadow: -15px 18px #fff;
   margin-top:2.5em;
   margin-left: 1.5em;
   margin-right: 1.5em;
-  margin-bottom: auto;
+  margin-bottom: 15vh; /*changed this from auto para hindi mag-interfere sa ginegenerate na list sa exercise.vue*/
   padding:2em;
   width: 500px;
   border-radius: 30px;
