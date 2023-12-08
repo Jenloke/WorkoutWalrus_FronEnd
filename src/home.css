@@ -109,11 +109,4 @@
   padding: .5em;
 }
 
-.Spacer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  padding-left: 50%;
-  padding-right: 10%;
-}
+

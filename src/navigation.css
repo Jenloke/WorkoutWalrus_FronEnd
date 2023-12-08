@@ -213,4 +213,10 @@ color: var(--bg);
   transform: translateY(0px) rotate(-45deg);
 }
 
+.Spacer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 
