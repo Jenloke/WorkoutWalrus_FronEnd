@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onUpdated } from 'vue';
+import { ref, onUpdated, computed } from 'vue';
 import { types } from '../selection/typesExercise';
 import { muscles } from '../selection/musclesExercise';
 import { difficulties } from '../selection/difficultiesExercise';
@@ -33,7 +33,7 @@ let selecteDifficulty = ref('')
 //   }
 // }
 
-const exeList = ref({})
+const exeList = ref([])
 
 let call = 0
 
@@ -56,7 +56,7 @@ onUpdated(() => {
 // }
 
 import axios from 'axios'
-async function fetchData(url) {
+async function fetchExercise(url) {
   try {
     const response = await axios.get(url, {
       headers: {
@@ -66,27 +66,21 @@ async function fetchData(url) {
       console.log(response.data)
       // return response.data 
       exeList.value = response.data
+      insertCalorie()
     });
   } catch (error) {
     console.error('Error fetching data:', error);
   }
 }
 
-function fetchExercise(url) {
-  fetchData(url)
-  // exeList.value.forEach(exercise => {
-  //   exercise.time = 0
-  // });
-}
+function insertCalorie() {
+  exeList.value.forEach(exercise => {
+    exercise.time = 0
 
-let time = ref(0)
+    let baseCalorie = 0
+    let multiplier = 0.0
 
-async function updateList(exercise, mins){
-  let baseCalorie = 0
-  let multiplier = 0.0
-  try{
-    console.log(exercise.type, exercise.difficulty)
-    switch(exercise.type){
+    switch(exercise.type) {
       case "cardio":
         baseCalorie = 4.2
         break;
@@ -109,7 +103,8 @@ async function updateList(exercise, mins){
         baseCalorie = 4.7
         break;
     }
-    switch(exercise.difficulty){
+    
+    switch(exercise.difficulty) {
       case "beginner":
         multiplier = 1.0
         break;
@@ -120,21 +115,35 @@ async function updateList(exercise, mins){
         multiplier = 2.0
         break;
     }
+
+    let calorie = 0.0
+    calorie = baseCalorie * multiplier
+    exercise.calorie = calorie.toFixed(1)
+  })
+
+  console.log(exeList.value)
+}
+
+let time = ref(0)
+
+async function updateList(exercise, mins){
+  try{
     const mongodb = app.currentUser.mongoClient('mongodb-atlas')
     const collection = mongodb.db('workoutwalrus').collection('users')
-
-    let expectedCalorie = baseCalorie * multiplier
-
+  
+    console.log(exercise.type, exercise.difficulty)
+  
     const newItem = {
       name: exercise.name,
       instructions: exercise.instructions,
       equipment: exercise.equipment,
       time: mins,
-      calories: expectedCalorie
+      calories: exercise.calorie
     }
     await collection.updateOne(
       {userID: app.currentUser.id},
-      {$push: {toDo: newItem}})
+      {$push: {toDo: newItem}}
+    )
     console.log("success")
   }catch(err){
     console.error("tangina may error")
@@ -195,9 +204,9 @@ async function updateList(exercise, mins){
               <ul>
               <li v-for="exer in exeList" :value="exer.value" >
                 <div>
-                  <p>{{ exer.name }} - {{ exer.time }}</p>
-                  <!--  <input class="time" v-model="exer.time" type="number" placeholder=" " required> -->
-                  <input class="time" v-model="time" type="number" placeholder=" " required>
+                  <p>{{ exer.name }} - {{ exer.time }} - {{ exer.calorie }}</p>
+                  <input class="time" v-model="exer.time" type="number" placeholder=" " required>
+                  <!-- <input class="time" v-model="time" type="number" placeholder=" " required> -->
                   <label for="time">Alloted Time (in mins)</label>
                   <button @click="updateList(exer, time)"> Add </button>
                 </div>

@@ -57,7 +57,7 @@ export default {
             <ul>
               <li v-for="item in userData.toDo" :value="item.value">
                 <div>
-                  <p>{{ item.name }}</p>
+                  <p>{{ item.name }} - {{ item.time }}</p>
                   <button @click="updateCalories(item.time, item.calories, item)"> Finish </button>
                 </div>
               </li>
