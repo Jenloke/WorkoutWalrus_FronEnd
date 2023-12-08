@@ -76,7 +76,7 @@ import HelloWorld from './components/HelloWorld.vue'
         <li class="list">
             <router-link to="/todo">
               <span class="icon">
-                <fa icon="fire"/>
+                <fa icon="inbox"/>
               </span>
               <span class="text">
                 ToDo
