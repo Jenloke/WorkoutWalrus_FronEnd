@@ -137,8 +137,8 @@ async function updateList(exercise, mins){
       name: exercise.name,
       instructions: exercise.instructions,
       equipment: exercise.equipment,
-      time: mins,
-      calories: exercise.calorie
+      time: parseInt(mins),
+      calories: parseFloat(exercise.calorie)
     }
     await collection.updateOne(
       {userID: app.currentUser.id},
@@ -208,7 +208,7 @@ async function updateList(exercise, mins){
                   <input class="time" v-model="exer.time" type="number" placeholder=" " required>
                   <!-- <input class="time" v-model="time" type="number" placeholder=" " required> -->
                   <label for="time">Alloted Time (in mins)</label>
-                  <button @click="updateList(exer, time)"> Add </button>
+                  <button @click="updateList(exer, exer.time)"> Add </button>
                 </div>
               </li>
               </ul>
