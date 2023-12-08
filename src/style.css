@@ -175,6 +175,11 @@ box-shadow: -15px 18px #fff;
 {
   transform: translateX(calc(116px * 2));
 }
+
+.navigation ul li:nth-child(4).active ~ .indicator
+{
+  transform: translateX(calc(116px * 3));
+}
 /* End of Bars */
 
 /* Home */
