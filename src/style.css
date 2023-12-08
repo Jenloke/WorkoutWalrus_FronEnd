@@ -360,6 +360,36 @@ box-shadow: -15px 18px #fff;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
 }
 
+.exer .listExercise button{
+  padding: 0.5em;
+  width: 7vw;
+  height: 4vh;
+  border-radius: 20px;
+  outline: none;
+  border:none;
+  background: orange;
+  color: whitesmoke;
+  font-weight: bolder;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
+}
+
+.listExercise div{
+  display: flex;
+  flex-direction: row;
+  width: 70vw;
+}
+.listExercise p{
+  font-size: 15px;
+}
+.listExercise label{
+  font-size: 10px;
+}
+
+.listExercise div input{
+  width: 5vw;
+  height: 3vh;
+}
+
 .h-exer .exer .n-exer p{
   margin-top: 10px;
   height: 10px;

@@ -13,6 +13,7 @@ import Exercise from './components/Exercise.vue';
 import NotFound from './components/NotFound.vue';
 import Login from './components/Login.vue';
 import Register from './components/Register.vue';
+import ToDo from './components/ToDo.vue';
 
 import * as Realm from "realm-web";
 new Realm.App({id: 'workout_final-jogzu'})
@@ -30,6 +31,7 @@ const router = createRouter({
         { path: '/error', component: NotFound },
         { path: '/home', component: Home },
         { path: '/register', component: Register },
+        { path: '/todo', component: ToDo },
     ]
 });
 

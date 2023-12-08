@@ -73,6 +73,16 @@ import HelloWorld from './components/HelloWorld.vue'
               </span>
             </router-link>
         </li>
+        <li class="list">
+            <router-link to="/todo">
+              <span class="icon">
+                <fa icon="fire"/>
+              </span>
+              <span class="text">
+                ToDo
+              </span>
+            </router-link>
+        </li>
         <div class="indicator"></div>
       </ul>
     

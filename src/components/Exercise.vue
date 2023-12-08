@@ -3,6 +3,8 @@ import { ref, onUpdated } from 'vue';
 import { types } from '../selection/typesExercise';
 import { muscles } from '../selection/musclesExercise';
 import { difficulties } from '../selection/difficultiesExercise';
+import * as Realm from "realm-web";
+const app = Realm.getApp("workout_final-jogzu");
 
 
 const selectedType = ref('')
@@ -70,6 +72,67 @@ async function fetchData(url) {
     console.error('Error fetching data:', error);
   }
 }
+let time = ref(0)
+
+async function updateList(exercise, mins){
+  let baseCalorie = 0
+  let multiplier = 0.0
+  try{
+    console.log(exercise.type, exercise.difficulty)
+    switch(exercise.type){
+      case "cardio":
+        baseCalorie = 4.2
+        break;
+      case "olympic_weightlifting":
+        baseCalorie = 3.5
+        break;
+      case "plyometrics":
+        baseCalorie = 5.1
+        break;
+      case "powerlifting":
+        baseCalorie = 4.8
+        break;
+      case "strength":
+        baseCalorie = 3.2
+        break;
+      case "stretching":
+        baseCalorie = 2.4
+        break;
+      case "strongman":
+        baseCalorie = 4.7
+        break;
+    }
+    switch(exercise.difficulty){
+      case "beginner":
+        multiplier = 1.0
+        break;
+      case "intermediate":
+        multiplier = 1.5
+        break;
+      case "expert":
+        multiplier = 2.0
+        break;
+    }
+    const mongodb = app.currentUser.mongoClient('mongodb-atlas')
+    const collection = mongodb.db('workoutwalrus').collection('users')
+
+    let expectedCalorie = baseCalorie * multiplier
+
+    const newItem = {
+      name: exercise.name,
+      instructions: exercise.instructions,
+      equipment: exercise.equipment,
+      time: mins,
+      calories: expectedCalorie
+    }
+    await collection.updateOne(
+      {userID: app.currentUser.id},
+      {$push: {toDo: newItem}})
+    console.log("success")
+  }catch(err){
+    console.error("tangina may error")
+  }
+}
 
 </script>
 
@@ -123,11 +186,15 @@ async function fetchData(url) {
 
             <div v-else class="listExercise">
               <ul>
-              <li v-for="exer in exeList" :value="exer.name">
-                <button @click="console.log(exer.name)">{{ exer.name }} </button>
+              <li v-for="exer in exeList" :value="exer.value">
+                <div>
+                  <p>{{ exer.name }}</p>
+                  <input class="time" v-model="time" type="number" placeholder=" " required>
+                  <label for="time">Alloted Time (in mins)</label>
+                  <button @click="updateList(exer, time)"> Add </button>
+                </div>
               </li>
-            </ul>
-
+              </ul>
             </div>
   
           </main>
