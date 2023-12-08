@@ -47,9 +47,6 @@
 
         <div class="grouped">
           <span>
-            <a href="">Forget-Password</a>
-          </span>
-          <span>
             <a href="">Log-in</a>
           </span>
         </div>

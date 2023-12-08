@@ -1,6 +1,10 @@
 import { createApp } from 'vue'
 import { MotionPlugin } from '@vueuse/motion'
-import './style.css'
+import './navigation.css'
+import './home.css'
+import './exercise.css'
+import './calculator.css'
+import './logReg.css'
 import { createRouter, createWebHistory } from 'vue-router'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -39,11 +43,21 @@ app.use(router);
 app.use(MotionPlugin);
 app.mount('#app');
 
-const list = document.querySelectorAll('.list');
-function activeLink(){
-  list.forEach((item) => 
-  item.classList.remove('active'));
-  this.classList.add('active');
+
+
+let menuToggle = document.querySelector('.menuToggle');
+let navigation = document.querySelector('.navigation');
+menuToggle.onclick =function(){
+  menuToggle.classList.toggle('active');
+  navigation.classList.toggle('active');
 }
-list.forEach((item) => 
-item.addEventListener('click', activeLink));
+
+let Menulist = document.querySelectorAll('.Menulist li');
+function activeLink(){
+  Menulist.forEach((item) => 
+  item.classList.remove('active'));
+  this.classList.add('active')
+}
+
+Menulist.forEach((item) => 
+item.addEventListener('click',activeLink));

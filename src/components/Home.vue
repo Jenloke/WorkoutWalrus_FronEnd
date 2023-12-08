@@ -2,6 +2,20 @@
 import * as Realm from "realm-web";
 import { ref, onMounted } from 'vue';
 export default {
+  // data() {
+  //   return {
+  //     username: 'John Doe',
+  //     height: 'Height: 180cm',
+  //     weight: 'Weight: 75kg',
+  //     bmi: 'BMI: 23.15',
+  //     avatarSrc: 'src/assets/pfp.svg'
+  //   };
+  // },
+  // methods: {
+  //   update() {
+  //     console.log("abc")
+  //   }
+  // }
   setup(){
     const userData = ref(null)
     const weightLabel = ref(0.0)

@@ -33,61 +33,65 @@ import HelloWorld from './components/HelloWorld.vue'
 
 
 <template>
-  <div class="ww-logo">
-    <h1>
-      <span class="logo"><img class="logo" src="./assets/Logo.svg" alt="Image" srcset=""/></span> 
-      <span class="ww-header">Workout Walrus</span>
-    </h1>
-     
-  </div>
-  
+<div class="menuToggle" v-show="shouldShowNavBar"></div>
   <div v-show="shouldShowNavBar" class="navigation">
       <ul>
-        <li class="list">
-            <router-link to="/calculator">
-              <span class="icon">
-                <fa icon="fire"/>
-              </span>
-              <span class="text">
-                Calculator
-              </span>
-            </router-link>
-        </li>
-        <li class="list active">
-            <router-link to="/home">
-              <span class="icon">
-                <fa icon="home"/>
-              </span>
-              <span class="text">
-                Home
-              </span>
-            </router-link>
-        </li>
-        <li class="list">
-            <router-link to="/exercise">
-              <span class="icon">
-                <fa icon="dumbbell"/>
-              </span>
-              <span class="text">
-                Exercise
-              </span>
-            </router-link>
-        </li>
-        <li class="list">
+        <li class="logo" style="--bg:#333;">
             <router-link to="/todo">
-              <span class="icon">
-                <fa icon="inbox"/>
-              </span>
-              <span class="text">
-                ToDo
-              </span>
+              <div class="icon">
+                <img src="./assets/Logo.svg" alt="Image" srcset=""/>
+              </div>
+              <div class="text">Workout Walrus</div>
             </router-link>
         </li>
+
+        <div class="Menulist">
+          <li style="--bg:#6495ed;" class="active">
+            <router-link to="/home">
+              <div class="icon"><fa class="icon" icon="home"/></div>
+              <div class="text">Home</div>
+            </router-link>
+          </li> 
+          
+
+          <li style="--bg:#6495ed;">
+            <router-link to="/exercise">
+              <div class="icon"><fa class="icon" icon="dumbbell"/></div>
+              <div class="text">Exercise</div>
+            </router-link>
+          </li>
+
+          <li style="--bg:#6495ed;">
+            <router-link to="/todo">
+              <div class="icon"><fa class="icon" icon="inbox"/></div>
+              <div class="text">To Do</div>
+            </router-link>
+          </li>
+        </div>
+
+        <div class="bottom">
+          <li style="--bg:#333;">
+            <router-link to="/home">
+              <div class="icon">
+                <div class="imgBx">
+                  <img aria-hidden="true" src="src/assets/pfp.svg" alt="User Avatar" />
+                </div>
+              </div>
+              <div class="text">Username</div>
+            </router-link>
+          </li> 
+          <li style="--bg:#333;">
+            <router-link to="/home">
+              <div class="icon"><fa icon="right-from-bracket"/></div>
+              <div class="text">Logout</div>
+            </router-link>
+          </li> 
+        </div>
+
         <div class="indicator"></div>
       </ul>
-    
   </div>
-  
+
   <router-view></router-view>
   <!-- <a href="#/non-existent-path">Broken Link</a> -->
   <!-- <component :is="currentView" /> -->
@@ -103,4 +107,7 @@ export default {
     },
   },
 };
+
+
+
 </script>
