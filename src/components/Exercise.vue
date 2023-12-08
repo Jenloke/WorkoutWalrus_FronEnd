@@ -204,7 +204,7 @@ async function updateList(exercise, mins){
               <ul>
               <li v-for="exer in exeList" :value="exer.value" >
                 <div>
-                  <p>{{ exer.name }} - {{ exer.time }} - {{ exer.calorie }}</p>
+                  <p>{{ exer.name }} - {{ exer.time }} - {{ exer.calorie }} - {{ exer.time * exer.calorie }}</p>
                   <input class="time" v-model="exer.time" type="number" placeholder=" " required>
                   <!-- <input class="time" v-model="time" type="number" placeholder=" " required> -->
                   <label for="time">Alloted Time (in mins)</label>
