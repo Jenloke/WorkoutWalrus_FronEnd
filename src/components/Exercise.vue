@@ -63,7 +63,6 @@ async function fetchData(url) {
         'X-Api-Key': 'H2hjF7GM2NnHzuZTm5Nakw==cnVmqdsMHbfV8EVb'
       }
     }).then( (response) => {
-      // exeList.value.splice(0, exeList.value.length)
       console.log(response.data)
       // return response.data 
       exeList.value = response.data
@@ -72,6 +71,14 @@ async function fetchData(url) {
     console.error('Error fetching data:', error);
   }
 }
+
+function fetchExercise(url) {
+  fetchData(url)
+  // exeList.value.forEach(exercise => {
+  //   exercise.time = 0
+  // });
+}
+
 let time = ref(0)
 
 async function updateList(exercise, mins){
@@ -175,7 +182,7 @@ async function updateList(exercise, mins){
               </select>
             </div>
 
-            <button @click="fetchData(urlApi)"> 
+            <button @click="fetchExercise(urlApi)"> 
               Generate Exercise
             </button>
               
@@ -186,9 +193,10 @@ async function updateList(exercise, mins){
 
             <div v-else class="listExercise">
               <ul>
-              <li v-for="exer in exeList" :value="exer.value">
+              <li v-for="exer in exeList" :value="exer.value" >
                 <div>
-                  <p>{{ exer.name }}</p>
+                  <p>{{ exer.name }} - {{ exer.time }}</p>
+                  <!--  <input class="time" v-model="exer.time" type="number" placeholder=" " required> -->
                   <input class="time" v-model="time" type="number" placeholder=" " required>
                   <label for="time">Alloted Time (in mins)</label>
                   <button @click="updateList(exer, time)"> Add </button>
