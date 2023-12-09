@@ -1,32 +1,33 @@
 import { createApp } from 'vue'
 import { MotionPlugin } from '@vueuse/motion'
-import './navigation.css'
-import './home.css'
-import './exercise.css'
-import './calculator.css'
-import './logReg.css'
-import './Todo.css'
+
+import './css/navigation.css'
+import './css/home.css'
+import './css/exercise.css'
+import './css/logReg.css'
+import './css/Todo.css'
+
 import { createRouter, createWebHistory } from 'vue-router'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { fas } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
 import App from './App.vue'
 
-import Home from './components/Home.vue';
-import Calculator from './components/Calculator.vue';
-import Exercise from './components/Exercise.vue';
-import NotFound from './components/NotFound.vue';
-import Login from './components/Login.vue';
-import Register from './components/Register.vue';
-import ToDo from './components/ToDo.vue';
+import Home from './components/Home.vue'
+import Calculator from './components/Calculator.vue'
+import Exercise from './components/Exercise.vue'
+import NotFound from './components/NotFound.vue'
+import Login from './components/Login.vue'
+import Register from './components/Register.vue'
+import ToDo from './components/ToDo.vue'
 
-import * as Realm from "realm-web";
-new Realm.App({id: 'workout_final-jogzu'})
+import * as Realm from "realm-web"
+new Realm.App({ id: 'workout_final-jogzu' })
 
 library.add(fas);
 
-const app = createApp(App)
-.component('fa', FontAwesomeIcon)
+const app = createApp(App).component('fa', FontAwesomeIcon)
+
 const router = createRouter({
     history: createWebHistory(),
     routes: [
@@ -44,27 +45,26 @@ app.use(router);
 app.use(MotionPlugin);
 app.mount('#app');
 
+router.beforeEach((to, from, next) => {
+  const user = Realm.getApp('workout_final-jogzu');
 
-router.beforeEach((to, from, next) =>{
-  const user = Realm.getApp("workout_final-jogzu");
-  console.log('Navigating to:', to.fullPath);
-  if(to.fullPath === "/home" || to.fullPath === "/exercise" || to.fullPath === "/todo"){
-    if(!user.currentUser){
+  if(to.fullPath === "/home" || to.fullPath === "/exercise" || to.fullPath === "/todo") {
+    if(!user.currentUser) {
       next("/")
-    }else{
+    } else {
       next()
     }
   }
 
-  if(to.fullPath === "/"){
-    if(user.currentUser){
+  if(to.fullPath === "/") {
+    if(user.currentUser) {
       next("/home")
-    }else{
+    } else {
       next()
     }
   }
 
-  if(to.fullPath === "/register"){
+  if(to.fullPath === "/register") {
     next()
   }
 })
