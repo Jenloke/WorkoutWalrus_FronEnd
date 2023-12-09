@@ -48,7 +48,7 @@
         <div class="grouped">
           <span><p>Already have an Account? </p></span>
           <span>
-            <a href="">Log-in</a>
+            <a href="/">Log-in</a>
           </span>
         </div>
       </div>
