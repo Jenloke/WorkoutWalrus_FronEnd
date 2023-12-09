@@ -192,7 +192,7 @@ async function updateList(exercise, mins){
   </div>
   <div class="Spacer">
     <div class="criterion" v-motion-slide-top>
-      <div v-if="exeList.length === 0" >
+      <div class="criterions" v-if="exeList.length === 0" >
         <h1>No Exercise</h1>
         <h4>Select criteria to get started</h4>
       </div>
@@ -205,7 +205,7 @@ async function updateList(exercise, mins){
             </div>
               <div class="Instructions">
                 <p>Instructions: {{ exer.instructions }}</p> 
-                <p>{{ exer.calorie }} calorie per minute</p> 
+                <p class="cal">{{ exer.calorie }} calorie per minute</p> 
               </div>
               <div class="testings">
                 <span><input class="time" v-model="exer.time" type="number" placeholder=" " required>

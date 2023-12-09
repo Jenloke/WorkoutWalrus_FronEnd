@@ -20,10 +20,16 @@
           <input id="password" v-model="password" type="password" placeholder=" " required>
           <label for="password">Password</label>
         </div>
-        <div class ="forget"></div>
+        <!-- <div class ="forget">
+          <label for=""><a href="#">Forget Password?</a></label>
+        </div> -->
         <button id="l-button" @click="authenticateUser">Log in</button>
         <div class="registered"> 
-          <p>Don't have an account? <a href="/register">Sign up</a></p>
+          <p>Don't have an account? 
+          <router-link to="/register">
+          Sign up
+          </router-link>
+          </p>
         </div>
       </div>
     </div>

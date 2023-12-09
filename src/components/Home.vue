@@ -70,11 +70,10 @@ onMounted(async ()=>{
       
       <div id="recent-Act" v-motion-slide-top>
         <!-- <h1>Pending Activities</h1>   -->
-        <h1>Total Calories Burned</h1>
-        <h2>{{ totalCalLabel }}</h2>
+        <h1><fa icon="fire"/> Total Calories Burned <fa icon="fire"/></h1>
+        <h2>{{ totalCalLabel }} kcal</h2>
         <ul>
           <li>
-            The quick brown fox jumped over the lazy dog.
           </li>
         </ul>
       </div>
