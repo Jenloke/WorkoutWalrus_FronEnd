@@ -9,7 +9,7 @@
 #login{
   position: absolute;
   width: 400px;
-  height: 450px;
+  height: 400px;
   background:rgba(0, 0, 0, 0.1);
   border: 2px solid rgba(255,255,255,0.5);
   border-radius: 20px;
@@ -30,7 +30,7 @@ font-weight: 600;
 .login-content .input-box{
   position: relative;
   margin: 30px 0;
-  width: 310px;
+  width: 100%;
   border-bottom: 2px solid #fff;
 }
 
@@ -204,13 +204,20 @@ input::placeholder{
 
 .grouped{
   display: flex;
-  justify-content: right;
+  justify-content: space-evenly;
+}
+
+.grouped span{
+  color: #fff;
+  position: relative;
+  top:10px;
+  text-decoration: none;
+  font-weight: 500;
 }
 
 .grouped span a{
   color: #fff;
   position: relative;
-  top:10px;
   text-decoration: none;
   font-weight: 500;
 }

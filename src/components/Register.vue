@@ -46,6 +46,7 @@
         <button id="r-button" @click="signUp">Register</button>
 
         <div class="grouped">
+          <span><p>Already have an Account? </p></span>
           <span>
             <a href="">Log-in</a>
           </span>
