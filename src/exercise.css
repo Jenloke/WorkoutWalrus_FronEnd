@@ -5,21 +5,23 @@
   padding: 1.5em;
   justify-content: center;
   align-items: center;
-  min-width: 400px;
-  width: 100%px;
+  width: 100%;
 }
 
 .h-exer .exer
 {
-  display: flexbox;
-  flex-direction: column;
-  background: white;
-  box-shadow: 0 5px 5px black;
   margin-bottom: 10px;
   border-radius: 10px;
+  text-align: center;
+  justify-content: center;
+}
+
+main{
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
+  width: 100%;
 }
 
 .h-exer .exer .selection
@@ -29,6 +31,7 @@
   padding: 1em;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 .h-exer .exer .selection label
@@ -44,6 +47,7 @@
   padding:.5em;
   border-radius: 5px;
   background: cornflowerblue;
+  min-width: 200px;
   width: 50%;
   border: none;
   outline: none;
@@ -66,6 +70,7 @@
 .h-exer .exer .genbtn
 {
   margin: 1em;
+  min-width: 200px;
   width: 30%;
   padding: 1em;
   border-radius: 10px;

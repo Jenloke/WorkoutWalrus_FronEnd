@@ -43,10 +43,12 @@ export default {
 <template>
   <div class="Spacer">
   <div  id="main-content" v-motion-slide-top>
-    <header class="user">
-        <h1 >{{ userData.username }}</h1>
-        <img id="pfp" aria-hidden="true" src="src/assets/pfps.svg" alt="User Avatar" /> 
-    </header>
+    <div class="backed">
+      <header class="user">
+          <h1 >{{ userData.username }}</h1>
+          <img id="pfp" aria-hidden="true" src="src/assets/pfps.svg" alt="User Avatar" /> 
+      </header>
+    </div>
     <main>
       <div id="UserInfo" v-motion-slide-top>
       <h1>{{ userData.name }}</h1>
@@ -72,7 +74,7 @@ export default {
       </div>
       
       <div id="recent-Act" v-motion-slide-top>
-        <h1>Recent Activity</h1>  
+        <h1>Pending Activities</h1>  
         <ul>
           <li>
             The quick brown fox jumped over the lazy dog.
