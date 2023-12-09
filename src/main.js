@@ -62,6 +62,10 @@ router.beforeEach((to, from, next) =>{
       next()
     }
   }
+
+  if(to.fullPath === "/register"){
+    next()
+  }
 })
 
 
