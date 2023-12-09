@@ -9,7 +9,7 @@ const user = app.currentUser
 userData.value = user.customData
 
 const userCalTotal = ref(0)
-userCalTotal.value = parseFloat(userData.value.totalCalBurned["$numberDouble"])
+userCalTotal.value = Math.ceil(parseFloat(userData.value.totalCalBurned["$numberDouble"]))
 
 const fetchData = async () =>{
   userData.value = user.customData
@@ -81,7 +81,7 @@ onUpdated(async ()=> {
         </div>
 
         <div class="act" v-else>
-          <h1> {{ Math.ceil(userCalTotal) }}</h1>
+          <h1> {{ userCalTotal }}</h1>
           <p>No pending Activities.</p>
         </div>
       </div>
