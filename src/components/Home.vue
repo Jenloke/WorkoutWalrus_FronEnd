@@ -45,7 +45,7 @@ export default {
   <div  id="main-content" v-motion-slide-top>
     <header class="user">
         <h1 >{{ userData.username }}</h1>
-        <img id="pfp" aria-hidden="true" src="src/assets/pfp.svg" alt="User Avatar" /> 
+        <img id="pfp" aria-hidden="true" src="src/assets/pfps.svg" alt="User Avatar" /> 
     </header>
     <main>
       <div id="UserInfo" v-motion-slide-top>
