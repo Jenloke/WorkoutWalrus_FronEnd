@@ -1,7 +1,7 @@
 # Workout Walrus
 #### A workout calorie tracking application
 
-# TO Run the App
+# To Run the App
 - Clone the BackEnd Repository of this Application [Workout Walrus BackEnd](https://github.com/sethscruzat/WorkoutWalrus_Backend)
 - Run the BackEnd server
 - On the terminal located at the app's repository run "npm install"
