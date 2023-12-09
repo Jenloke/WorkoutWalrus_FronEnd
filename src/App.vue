@@ -87,7 +87,6 @@ import HelloWorld from './components/HelloWorld.vue'
             </router-link>
           </li> 
         </div>
-
         <div class="indicator"></div>
       </ul>
   </div>
