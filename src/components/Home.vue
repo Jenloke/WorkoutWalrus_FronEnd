@@ -64,12 +64,12 @@ export default {
             <span class="wlabel">BMI: {{ bmi }}</span>
           </li>
         </ul>
-
+<!-- 
         <div class="center">
           <button class="button updated" @click="update">
             Update
           </button>
-        </div>
+        </div> -->
         
       </div>
       

@@ -82,7 +82,7 @@ onUpdated(async ()=> {
 
         <div class="act" v-else>
           <h1> {{ Math.ceil(userCalTotal) }}</h1>
-          <p>No data available.</p>
+          <p>No pending Activities.</p>
         </div>
       </div>
     </div>

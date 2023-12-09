@@ -20,10 +20,7 @@
           <input id="password" v-model="password" type="password" placeholder=" " required>
           <label for="password">Password</label>
         </div>
-        <div class ="forget">
-          <label for=""><a href="#">Forget Password?</a></label>
-          
-        </div>
+        <div class ="forget"></div>
         <button id="l-button" @click="authenticateUser">Log in</button>
         <div class="registered"> 
           <p>Don't have an account? <a href="/register">Sign up</a></p>

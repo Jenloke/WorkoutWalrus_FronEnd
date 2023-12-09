@@ -191,13 +191,13 @@ async function updateList(exercise, mins){
     </div>
   </div>
   <div class="Spacer">
-    <div class="criterion">
+    <div class="criterion" v-motion-slide-top>
       <div v-if="exeList.length === 0" >
         <h1>No Exercise</h1>
         <h4>Select criteria to get started</h4>
       </div>
 
-      <div v-else class="listExercise">
+      <div v-else class="listExercise" v-motion-slide-top>
         <ul>
           <li class="exerList" v-for="exer in exeList" :value="exer.value" >
             <div>
