@@ -5,6 +5,7 @@ import './home.css'
 import './exercise.css'
 import './calculator.css'
 import './logReg.css'
+import './Todo.css'
 import { createRouter, createWebHistory } from 'vue-router'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
