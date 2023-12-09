@@ -1,9 +1,9 @@
 <script setup>
 import { ref, onUpdated } from 'vue'
 
-import { types } from '../selection/typesExercise'
-import { muscles } from '../selection/musclesExercise'
-import { difficulties } from '../selection/difficultiesExercise'
+import { types } from './selection/typesExercise'
+import { muscles } from './selection/musclesExercise'
+import { difficulties } from './selection/difficultiesExercise'
 
 import axios from 'axios'
 import { v4 as uuidv4 } from 'uuid'
