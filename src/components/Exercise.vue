@@ -6,7 +6,6 @@ import { difficulties } from '../selection/difficultiesExercise';
 import * as Realm from "realm-web";
 const app = Realm.getApp("workout_final-jogzu");
 
-
 const selectedType = ref('')
 let selectedMuscle = ref('')
 let selecteDifficulty = ref('')
@@ -35,25 +34,11 @@ let selecteDifficulty = ref('')
 
 const exeList = ref([])
 
-let call = 0
-
 let urlApi = ref(`https://api.api-ninjas.com/v1/exercises?type=${selectedType.value}&?muscle=${selectedMuscle.value}&?difficulty${selecteDifficulty.value}`)
 
 onUpdated(() => {
   urlApi = `https://api.api-ninjas.com/v1/exercises?type=${selectedType.value}&?muscle=${selectedMuscle.value}&?difficulty${selecteDifficulty.value}`
 })
-
-// async function getExerciseApi(url = urlApi) {
-//   call++
-//   console.log(call)
-//   const response = await fetch(url, {
-//     headers: {
-//       'X-Api-Key': 'H2hjF7GM2NnHzuZTm5Nakw==cnVmqdsMHbfV8EVb'
-//     }
-//   }).then;
-//   console.log(response)
-//   return await response.json();
-// }
 
 import axios from 'axios'
 async function fetchExercise(url) {
@@ -64,7 +49,6 @@ async function fetchExercise(url) {
       }
     }).then( (response) => {
       console.log(response.data)
-      // return response.data 
       exeList.value = response.data
       insertCalorie()
     });
@@ -124,8 +108,6 @@ function insertCalorie() {
   console.log(exeList.value)
 }
 
-let time = ref(0)
-
 async function updateList(exercise, mins){
   try{
     const mongodb = app.currentUser.mongoClient('mongodb-atlas')
@@ -149,7 +131,6 @@ async function updateList(exercise, mins){
     console.error("tangina may error")
   }
 }
-
 </script>
 
 <template>
@@ -165,8 +146,9 @@ async function updateList(exercise, mins){
 
           <main>
             <div class="selection">
+              <label>Type</label>
               <select v-model="selectedType">
-                <option disabled value="" selected>Select an option</option>
+                <option value="" disabled selected hidden>Select a type</option>
                 <option v-for="type in types" :value="type.value"> 
                   {{ type.name }}
                 </option>
@@ -174,8 +156,9 @@ async function updateList(exercise, mins){
 
               <br>
 
+              <label>Muscle</label>
               <select v-model="selectedMuscle">
-                <option disabled value="" selected>Select an option</option>
+                <option value="" disabled selected hidden>Select a muscle</option>
                 <option v-for="muscle in muscles" :value="muscle.value"> 
                   {{ muscle.name }}
                 </option>
@@ -183,8 +166,9 @@ async function updateList(exercise, mins){
               
               <br>
 
+              <label>Difficulty</label>
               <select v-model="selecteDifficulty">
-                <option disabled value="" selected>Select an option</option>
+                <option value="" disabled selected hidden>Select a difficulty</option>
                 <option v-for="difficulty in difficulties" :value="difficulty.value"> 
                   {{ difficulty.name }}
                 </option>
@@ -196,21 +180,29 @@ async function updateList(exercise, mins){
             </button>
               
             <div v-if="exeList.length === 0" class="n-exer">
-              <p>No Exercise</p>
-              <p>{{ selectedType }} - {{ selectedMuscle }} - {{ selecteDifficulty }}</p>
+              <h1>No Exercise</h1>
+              <h4>Select criteria to get started</h4>
             </div>
 
             <div v-else class="listExercise">
               <ul>
-              <li v-for="exer in exeList" :value="exer.value" >
-                <div>
-                  <p>{{ exer.name }} - {{ exer.time }} - {{ exer.calorie }} - {{ exer.time * exer.calorie }}</p>
-                  <input class="time" v-model="exer.time" type="number" placeholder=" " required>
-                  <!-- <input class="time" v-model="time" type="number" placeholder=" " required> -->
-                  <label for="time">Alloted Time (in mins)</label>
-                  <button @click="updateList(exer, exer.time)"> Add </button>
-                </div>
-              </li>
+                <li v-for="exer in exeList" :value="exer.value" >
+                  <div>
+                    <div>
+                      <h4>{{ exer.name }}</h4> 
+                      <p>Instructions: {{ exer.instructions }}</p> 
+                      <p>{{ exer.calorie }} calorie per minute</p> 
+                    </div>
+                    <div>
+                      <input class="time" v-model="exer.time" type="number" placeholder=" " required>
+                      <!-- <input class="time" v-model="time" type="number" placeholder=" " required> -->
+                      <label for="time">minutes</label>
+                      <br>
+                      <p>{{ `${exer.calorie} * ${exer.time}` }} = {{ Math.ceil(exer.time * exer.calorie) }} estimated calories burned</p>
+                      <button @click="updateList(exer, exer.time)">Add Exercise</button>
+                    </div>
+                  </div>
+                </li>
               </ul>
             </div>
   
