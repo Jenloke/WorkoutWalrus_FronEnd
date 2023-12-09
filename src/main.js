@@ -44,6 +44,27 @@ app.use(MotionPlugin);
 app.mount('#app');
 
 
+router.beforeEach((to, from, next) =>{
+  const user = Realm.getApp("workout_final-jogzu");
+  console.log('Navigating to:', to.fullPath);
+  if(to.fullPath === "/home" || to.fullPath === "/exercise" || to.fullPath === "/todo"){
+    if(!user.currentUser){
+      next("/")
+    }else{
+      next()
+    }
+  }
+
+  if(to.fullPath === "/"){
+    if(user.currentUser){
+      next("/home")
+    }else{
+      next()
+    }
+  }
+})
+
+
 
 let menuToggle = document.querySelector('.menuToggle');
 let navigation = document.querySelector('.navigation');

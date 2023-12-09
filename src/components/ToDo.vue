@@ -50,11 +50,14 @@ onMounted(async ()=>{
 <template>
     <div class="Spacer">  
       <div id="main-content" v-motion-slide-top>
-        <div v-if="userData && userData.toDo.length > 0">
+        <div v-if="!user">
+          <p>No user logged in.</p>
+        </div>
+        <div v-else-if="userData && userData.toDo.length > 0">
           <ul>
             <li v-for="item in userData.toDo" :value="item.value">
               <div>
-                <p>{{ item.name }} - {{ item.time }} - {{ item.calories }}</p>
+                <p>{{ item.name }} - {{ parseInt(item.time["$numberInt"]) }} - {{ parseFloat(item.calories["$numberDouble"]) }}</p>
                 <button @click="updateCalories(item.time, item.calories, item)"> Finish </button>
               </div>
             </li>

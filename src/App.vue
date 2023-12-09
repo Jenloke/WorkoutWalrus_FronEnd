@@ -80,8 +80,8 @@ import HelloWorld from './components/HelloWorld.vue'
               <div class="text">Username</div>
             </router-link>
           </li> 
-          <li style="--bg:#333;">
-            <router-link to="/home">
+          <li style="--bg:#333;" @click="userLogout">
+            <router-link to="/">
               <div class="icon"><fa icon="right-from-bracket"/></div>
               <div class="text">Logout</div>
             </router-link>
@@ -98,7 +98,20 @@ import HelloWorld from './components/HelloWorld.vue'
 </template>
 
 <script>
+import * as Realm from "realm-web";
+const app = Realm.getApp("workout_final-jogzu");
+
 export default {
+  methods:{
+    async userLogout(){
+      try{
+        await app.currentUser.logOut()
+        this.$router.replace({path: `/`})
+      }catch(err){
+        console.error("gago", err)
+      }
+    }
+  },
   computed: {
     shouldShowNavBar() {
       // Specify the routes where you want to hide the navigation bar
@@ -107,7 +120,4 @@ export default {
     },
   },
 };
-
-
-
 </script>
