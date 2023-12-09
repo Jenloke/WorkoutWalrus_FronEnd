@@ -1,43 +1,38 @@
-<script>
+<script setup>
 import * as Realm from "realm-web";
 import { ref, onMounted } from 'vue';
-export default {
-  setup(){
-    const userData = ref(null)
-    const weightLabel = ref(0.0)
-    const heightLabel = ref(0.0)
-    let weight, height
-    const bmi = ref(0.0)
-    const app = Realm.getApp("workout_final-jogzu");
-    const user = app.currentUser
-    userData.value = user.customData
 
-    const fetchData = async () =>{
-      userData.value = user.customData
+const userData = ref(null)
+const weightLabel = ref(0.0)
+const heightLabel = ref(0.0)
+const totalCalLabel = ref(0)
+let weight, height
+const bmi = ref(0.0)
 
-      weightLabel.value = parseFloat(userData.value.weight["$numberDouble"])
-      weight = parseFloat(userData.value.weight["$numberDouble"])
+const app = Realm.getApp("workout_final-jogzu");
+const user = app.currentUser
+userData.value = user.customData
 
-      heightLabel.value = parseFloat(userData.value.height["$numberDouble"])
-      height = parseFloat(userData.value.height["$numberDouble"])
-      
-      bmi.value = (weight/(height*0.01)**2).toFixed(2)
+const fetchData = async () =>{
+  userData.value = user.customData
 
-    }
+  weightLabel.value = parseFloat(userData.value.weight["$numberDouble"])
+  weight = parseFloat(userData.value.weight["$numberDouble"])
 
-    onMounted(async ()=>{
-      await app.currentUser.refreshCustomData()
-      await fetchData()
-    })
-    return{
-      userData,
-      weightLabel,
-      heightLabel,
-      bmi,
-    }
-    
-  }
-};
+  heightLabel.value = parseFloat(userData.value.height["$numberDouble"])
+  height = parseFloat(userData.value.height["$numberDouble"])
+  
+  bmi.value = (weight/(height*0.01)**2).toFixed(2)
+
+  totalCalLabel.value = Math.ceil(parseFloat(userData.value.totalCalBurned["$numberDouble"]))
+
+  console.log(userData.value)
+}
+
+onMounted(async ()=>{
+  await app.currentUser.refreshCustomData()
+  await fetchData()
+})
 </script>
 
 <template>
@@ -74,7 +69,9 @@ export default {
       </div>
       
       <div id="recent-Act" v-motion-slide-top>
-        <h1>Pending Activities</h1>  
+        <!-- <h1>Pending Activities</h1>   -->
+        <h1>Total Calories Burned</h1>
+        <h2>{{ totalCalLabel }}</h2>
         <ul>
           <li>
             The quick brown fox jumped over the lazy dog.
