@@ -10,31 +10,34 @@ userData.value = user.customData
 
 const fetchData = async () =>{
   userData.value = user.customData
+  console.log(userData.value.toDo)
 }
 
 const updateCalories = async (mins, calories, exercise) =>{
-    const mongodb = app.currentUser.mongoClient('mongodb-atlas')
-    const collection = mongodb.db('workoutwalrus').collection('users')
+  userData.value.toDo = userData.value.toDo.filter((t) => t != exercise)
 
-    let newMins = parseInt(mins["$numberInt"])
-    let newCal = parseFloat(calories["$numberDouble"])
+  const mongodb = app.currentUser.mongoClient('mongodb-atlas')
+  const collection = mongodb.db('workoutwalrus').collection('users')
 
-    let incCal = newMins*newCal
-    console.log(incCal)
+  let newMins = parseInt(mins["$numberInt"])
+  let newCal = parseFloat(calories["$numberDouble"])
 
-    try{
-        const filter = {
-            name: exercise.name,
-            instructions: exercise.instructions,
-            equipment: exercise.equipment,
-            time: exercise.time,
-            calories: exercise.calories,
-        }
-        await collection.updateOne({userID: user.id},{$pull: {toDo: filter}})
-        await collection.updateOne({userID: user.id}, {$inc: {totalCalBurned: incCal}})
-    }catch(err){
-        console.error("tangina", err)
-    }
+  let incCal = newMins*newCal
+  console.log(incCal)
+
+  try{
+      const filter = {
+          name: exercise.name,
+          instructions: exercise.instructions,
+          equipment: exercise.equipment,
+          time: exercise.time,
+          calories: exercise.calories,
+      }
+      await collection.updateOne({userID: user.id},{$pull: {toDo: filter}})
+      await collection.updateOne({userID: user.id}, {$inc: {totalCalBurned: incCal}})
+  }catch(err){
+      console.error("tangina", err)
+  }
 }
 
 onMounted(async ()=>{
