@@ -1,39 +1,19 @@
 <script setup>
-import { ref, onUpdated, computed } from 'vue';
-import { types } from '../selection/typesExercise';
-import { muscles } from '../selection/musclesExercise';
-import { difficulties } from '../selection/difficultiesExercise';
+import { ref, onUpdated } from 'vue'
+
+import { types } from '../selection/typesExercise'
+import { muscles } from '../selection/musclesExercise'
+import { difficulties } from '../selection/difficultiesExercise'
+
 import axios from 'axios'
-import { v4 as uuidv4 } from 'uuid';
-import * as Realm from "realm-web";
-const app = Realm.getApp("workout_final-jogzu");
+import { v4 as uuidv4 } from 'uuid'
+
+import * as Realm from 'realm-web'
+const app = Realm.getApp('workout_final-jogzu')
 
 const selectedType = ref('')
-let selectedMuscle = ref('')
-let selecteDifficulty = ref('')
-
-/* Napagana ko yung sa database. ang issue kasi eh since hindi ko nilagay LAHAT ng exercise, may mga times talaga
-   na wala siyang mage-generate na list. pero honestly at this point, kahit ano na lang gawin para sa computation
-   dun na lang tayo sa madali.   */
-
-// import * as Realm from "realm-web";
-// const app = Realm.getApp("workout_final-jogzu");
-// const getExerciseApi = ref(callexercise())
-// async function callexercise() {
-//   try {
-//     const mongodb = app.currentUser.mongoClient('mongodb-atlas')
-//     const collection = mongodb.db('workoutwalrus').collection('exercises')
-//     console.log("success")
-//     const query = {"type": selectedType.value,"muscle": selectedMuscle.value,"difficulty": selecteDifficulty.value}
-//     const realmResponse =  await collection.find(query)
-//     console.log(realmResponse)
-//     exeList.value = realmResponse
-//   } 
-//   catch(err) {
-//     console.log('failed', err)
-//   }
-// }
-
+const selectedMuscle = ref('')
+const selecteDifficulty = ref('')
 const exeList = ref([])
 
 let urlApi = ref(`https://api.api-ninjas.com/v1/exercises?type=${selectedType.value}&?muscle=${selectedMuscle.value}&?difficulty${selecteDifficulty.value}`)
@@ -49,10 +29,9 @@ async function fetchExercise(url) {
         'X-Api-Key': 'H2hjF7GM2NnHzuZTm5Nakw==cnVmqdsMHbfV8EVb'
       }
     }).then( (response) => {
-      console.log(response.data)
       exeList.value = response.data
       insertCalorie()
-    });
+    })
   } catch (error) {
     console.error('Error fetching data:', error);
   }
@@ -68,53 +47,49 @@ function insertCalorie() {
     switch(exercise.type) {
       case "cardio":
         baseCalorie = 4.2
-        break;
+        break
       case "olympic_weightlifting":
         baseCalorie = 3.5
-        break;
+        break
       case "plyometrics":
         baseCalorie = 5.1
-        break;
+        break
       case "powerlifting":
         baseCalorie = 4.8
-        break;
+        break
       case "strength":
         baseCalorie = 3.2
-        break;
+        break
       case "stretching":
         baseCalorie = 2.4
-        break;
+        break
       case "strongman":
         baseCalorie = 4.7
-        break;
+        break
     }
     
     switch(exercise.difficulty) {
       case "beginner":
         multiplier = 1.0
-        break;
+        break
       case "intermediate":
         multiplier = 1.5
-        break;
+        break
       case "expert":
         multiplier = 2.0
-        break;
+        break
     }
 
     let calorie = 0.0
     calorie = baseCalorie * multiplier
     exercise.calorie = calorie.toFixed(1)
   })
-
-  console.log(exeList.value)
 }
 
-async function updateList(exercise, mins){
-  try{
+async function updateList(exercise, mins) {
+  try {
     const mongodb = app.currentUser.mongoClient('mongodb-atlas')
     const collection = mongodb.db('workoutwalrus').collection('users')
-  
-    console.log(exercise.type, exercise.difficulty)
   
     const newItem = {
       id: uuidv4(),
@@ -128,9 +103,8 @@ async function updateList(exercise, mins){
       {userID: app.currentUser.id},
       {$push: {toDo: newItem}}
     )
-    console.log("success")
-  }catch(err){
-    console.error("tangina may error")
+  } catch(error) {
+    console.error('Error Occured (Posting Error):', error)
   }
 }
 </script>
@@ -141,9 +115,7 @@ async function updateList(exercise, mins){
       <div class="h-exer">
         <div class="exer">
           <header>
-            <h1>
-              Exercise
-            </h1>
+            <h1>Exercise</h1>
           </header>
 
           <main>
@@ -177,16 +149,11 @@ async function updateList(exercise, mins){
               </select>
             </div>
             
-
             <button class="genbtn" @click="fetchExercise(urlApi)"> 
               Generate Exercise
             </button>
-
-            </main>
+          </main>
         </div>
-              
-            
-          
       </div>
     </div>
   </div>
@@ -209,11 +176,9 @@ async function updateList(exercise, mins){
               </div>
               <div class="testings">
                 <span><input class="time" v-model="exer.time" type="number" placeholder=" " required>
-                <!-- <input class="time" v-model="time" type="number" placeholder=" " required> -->
                 <label for="time">minutes</label>
                 </span>
                 <p>{{ `${exer.calorie} * ${exer.time}` }} = {{ Math.ceil(exer.time * exer.calorie) }} estimated calories burned</p>
-                
               </div>
               <div class="btns">
               <button class="exbtn" @click="updateList(exer, exer.time)">Add Exercise</button>

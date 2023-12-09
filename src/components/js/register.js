@@ -1,31 +1,28 @@
-import { ref } from 'vue';
-import * as Realm from "realm-web";
-import { useRouter } from 'vue-router';
+import { ref } from 'vue'
+import * as Realm from 'realm-web'
+import { useRouter } from 'vue-router'
 
-export const registerUser = (router) =>{
-    const email = ref("")
-    const username = ref("")
-    const password = ref("")
+export const registerUser = (router) => {
+    const email = ref('')
+    const username = ref('')
+    const password = ref('')
     const birthday = ref(Date)
-    const name = ref("")
+    const name = ref('')
     const height = ref(0)
     const weight = ref(0)
     const error = ref({})
     const app = Realm.getApp({id: 'workout_final-jogzu'})
 
-    const signUp = async () =>{
-        try{
+    const signUp = async () => {
+        try {
             await app.emailPasswordAuth.registerUser({ email: email.value, password: password.value });
-            console.log("user authenticated")
 
             await app.logIn(Realm.Credentials.emailPassword(email.value, password.value))
-            console.log("user logged in")
             
             const user = app.currentUser
             if(user && user.isLoggedIn){
-                const mongodb = app.currentUser.mongoClient("mongodb-atlas")
-                const collection = mongodb.db("workoutwalrus").collection("users")
-                console.log("mongo connection established")
+                const mongodb = app.currentUser.mongoClient('mongodb-atlas')
+                const collection = mongodb.db('workoutwalrus').collection('users')
                 
                 const response = await collection.insertOne({
                     userID: app.currentUser.id,
@@ -37,17 +34,16 @@ export const registerUser = (router) =>{
                     totalCalBurned: 0,
                     toDo: []
                 })
-                console.log(response)
             }
 
-            console.log('User signed up successfully')
-            if(router){
+            if(router) {
                 router.replace({path: `/`})
-            }else{
-                console.log('tangina mo')
+            } else {
+                console.log('Routinng Error')
             }
-        }catch (error){
-            console.error('Error gago', error)
+
+        } catch(error) {
+            console.error('Error (Registering Error): ', error)
         }
     }
 
@@ -59,8 +55,7 @@ export const registerUser = (router) =>{
         name,
         height,
         weight,
-        error,
-        //methods
+        error,  
         signUp
     }
 }

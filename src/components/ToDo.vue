@@ -1,24 +1,22 @@
 <script setup>
-import { parse } from "@fortawesome/fontawesome-svg-core";
-import * as Realm from "realm-web";
-import { ref, onMounted, onUpdated } from 'vue';
-const app = Realm.getApp("workout_final-jogzu");
+import { ref, onMounted, onUpdated } from 'vue'
+
+import * as Realm from "realm-web"
+const app = Realm.getApp("workout_final-jogzu")
+const user = app.currentUser
 
 const userData = ref(null)
-const user = app.currentUser
 userData.value = user.customData
 
 const userCalTotal = ref(0)
 userCalTotal.value = Math.ceil(parseFloat(userData.value.totalCalBurned["$numberDouble"]))
 
-const fetchData = async () =>{
+const fetchData = async () => {
   userData.value = user.customData
-  // console.log(userData.value)
-  // console.log(userData.value.totalCalBurned)
 }
 
-const updateCalories = async (mins, calories, exercise) =>{
-  userData.value.toDo = userData.value.toDo.filter((t) => t != exercise)
+const updateCalories = async (mins, calories, exercise) => {
+  userData.value.toDo = userData.value.toDo.filter((list) => list != exercise)
 
   const mongodb = app.currentUser.mongoClient('mongodb-atlas')
   const collection = mongodb.db('workoutwalrus').collection('users')
@@ -26,39 +24,34 @@ const updateCalories = async (mins, calories, exercise) =>{
   let newMins = parseInt(mins["$numberInt"])
   let newCal = parseFloat(calories["$numberDouble"])
 
-  let incCal = newMins*newCal
-  console.log(incCal)
-
+  let incCal = newMins * newCal
   userCalTotal.value += incCal
 
-  try{
-      const filter = {
-          name: exercise.name,
-          instructions: exercise.instructions,
-          equipment: exercise.equipment,
-          time: exercise.time,
-          calories: exercise.calories,
-      }
-      await collection.updateOne({userID: user.id},{$pull: {toDo: filter}})
-      await collection.updateOne({userID: user.id}, {$inc: {totalCalBurned: incCal}})
-  }catch(err){
-      console.error("tangina", err)
+  try {
+    const filter = {
+        name: exercise.name,
+        instructions: exercise.instructions,
+        equipment: exercise.equipment,
+        time: exercise.time,
+        calories: exercise.calories,
+    }
+
+    await collection.updateOne({userID: user.id},{$pull: {toDo: filter}})
+    await collection.updateOne({userID: user.id}, {$inc: {totalCalBurned: incCal}})
+  } catch(error) {
+    console.error("Error Occured (Posting Error):", error)
   }
 }
 
-onMounted(async ()=>{
+onMounted(async () => {
   await app.currentUser.refreshCustomData()
   await fetchData()
 })
 
-onUpdated(async ()=> {
+onUpdated(async () => {
   await app.currentUser.refreshCustomData()
   await fetchData()
 })
-  // return{
-  //   userData,
-  //   updateCalories,
-  // }
 </script>
 
 <template>
@@ -67,13 +60,16 @@ onUpdated(async ()=> {
         <div class="act" v-if="!user">
           <p>No user logged in.</p>
         </div>
+        
         <div class="act" v-else-if="userData && userData.toDo.length > 0">
-        <!-- <div v-else-if="userData"> -->
-          <h1> {{ Math.ceil(userCalTotal) }}</h1>
+          <h1>Calories Burned</h1>
+          <h1>{{ Math.ceil(userCalTotal) }} kcal</h1>
           <ul>
             <li  v-for="item in userData.toDo" :value="item.value">
               <div class="act" >
-                <p>{{ item.name }} - {{ parseInt(item.time["$numberInt"]) }} - {{ parseFloat(item.calories["$numberDouble"]) }}</p>
+                <h2>{{ item.name }}</h2>
+                <p>{{ parseFloat(item.calories["$numberDouble"]) }} Calories per Minute @ {{ parseInt(item.time["$numberInt"]) }} Minutes Duration</p>
+                <p>{{ Math.floor(parseFloat(item.calories["$numberDouble"]) * parseInt(item.time["$numberInt"])) }} kcal - Estimated Total Calories Burned</p>
                 <button class="finish" @click="updateCalories(item.time, item.calories, item)"> Finish </button>
               </div>
             </li>
@@ -81,7 +77,8 @@ onUpdated(async ()=> {
         </div>
 
         <div class="act" v-else>
-          <h1> {{ userCalTotal }}</h1>
+          <h1>Calories Burned</h1>
+          <h1>{{ Math.ceil(userCalTotal) }} kcal</h1>
           <p>No pending Activities.</p>
         </div>
       </div>

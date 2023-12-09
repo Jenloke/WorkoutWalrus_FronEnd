@@ -1,41 +1,41 @@
-import { ref } from 'vue';
-import * as Realm from "realm-web";
-export const loginAuthentication = (router) =>{
-    const email = ref("")
-    const password = ref("")
-    const error = ref({})
-    const app = Realm.getApp("workout_final-jogzu");
+import { ref } from 'vue'
+import * as Realm from "realm-web"
 
-    const authenticateUser = async () =>{
-        try{
-            console.log("start")
+export const loginAuthentication = (router) =>{
+    const email = ref('')
+    const password = ref('')
+    const error = ref({})
+    const app = Realm.getApp('workout_final-jogzu');
+
+    const authenticateUser = async () => {
+        try {
             const credentials = Realm.Credentials.emailPassword(
                 email.value,
                 password.value
             )
-            console.log(credentials)
-            try{
+
+            try {
                 await app.logIn(credentials)
-                console.log("logged in")
-                if(router){
+
+                if(router) {
                     router.replace({path: `/home`})
-                }else{
-                    console.log('tangina mo')
+                } else {
+                    console.log('Routing Error')
                 }
-            }catch(err){
-                console.error("Failed logging in", err)
+
+            } catch(error) {
+                console.error('Failed logging in (Login Error): ', error)
             }
-        }catch (err){
-            console.error('Error gago', err)
+        
+        } catch(error) {
+            console.error('Authentication Error: ', err)
         }
     }
 
     return {
-        //properties
         email,
         password,
         error,
-        //method
         authenticateUser
     }
 }
