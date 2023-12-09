@@ -3,6 +3,8 @@ import { ref, onUpdated, computed } from 'vue';
 import { types } from '../selection/typesExercise';
 import { muscles } from '../selection/musclesExercise';
 import { difficulties } from '../selection/difficultiesExercise';
+import axios from 'axios'
+import { v4 as uuidv4 } from 'uuid';
 import * as Realm from "realm-web";
 const app = Realm.getApp("workout_final-jogzu");
 
@@ -40,7 +42,6 @@ onUpdated(() => {
   urlApi = `https://api.api-ninjas.com/v1/exercises?type=${selectedType.value}&?muscle=${selectedMuscle.value}&?difficulty${selecteDifficulty.value}`
 })
 
-import axios from 'axios'
 async function fetchExercise(url) {
   try {
     const response = await axios.get(url, {
@@ -116,6 +117,7 @@ async function updateList(exercise, mins){
     console.log(exercise.type, exercise.difficulty)
   
     const newItem = {
+      id: uuidv4(),
       name: exercise.name,
       instructions: exercise.instructions,
       equipment: exercise.equipment,
