@@ -213,7 +213,9 @@ async function updateList(exercise, mins){
                 <p>{{ `${exer.calorie} * ${exer.time}` }} = {{ Math.ceil(exer.time * exer.calorie) }} estimated calories burned</p>
                 
               </div>
-              <button @click="updateList(exer, exer.time)">Add Exercise</button>
+              <div class="btns">
+              <button class="exbtn" @click="updateList(exer, exer.time)">Add Exercise</button>
+            </div>
           </li>
         </ul>
       </div>
