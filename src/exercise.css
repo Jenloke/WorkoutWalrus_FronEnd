@@ -1,126 +1,141 @@
-.h-exer{
-  display: flex;
+.h-exer
+{
+  background:whitesmoke;
+  border-radius: 10px;
+  padding: 1.5em;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  min-width: 400px;
+  width: 100%px;
 }
-.exer{
+
+.h-exer .exer
+{
+  display: flexbox;
+  flex-direction: column;
+  background: white;
+  box-shadow: 0 5px 5px black;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.h-exer .exer .selection
+{
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  justify-content: center;
+  align-items: center;
+}
+
+.h-exer .exer .selection label
+{
+  font-weight: bold;
+  padding: .15em;
+}
+
+.h-exer .exer .selection select
+{
+  align-items: center;
+  text-align: center;
+  padding:.5em;
+  border-radius: 5px;
+  background: cornflowerblue;
+  width: 50%;
+  border: none;
+  outline: none;
+  cursor: pointer;;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  letter-spacing: .05em;
+  box-shadow: 0 2px 5px black;
+}
+
+.h-exer .exer .selection select option
+{
+  background: white;
+  color: cornflowerblue;
+  font-weight: 500;
+  letter-spacing: .1em;
+}
+
+.h-exer .exer .genbtn
+{
+  margin: 1em;
+  width: 30%;
+  padding: 1em;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background: coral;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 2px 5px black;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.criterion
+{
+  margin-top: 10px;
+  justify-content: center;
+  min-width: 400px;
+  width: 430px;
+  align-items: center;
+  text-align: center;
+  background:rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(3px);
+  border-radius: 10px;
+  padding:.5em;
+  box-shadow: 0 2px 5px black;
+}
+
+.criterion h1{
+  color:red;
+}
+
+.criterion ul{
+  list-style: none;
+  background-color: white;
+  padding: .5em;
+  border-radius: 10px;
+}
+
+.criterion .listExercise {
+  padding:1em;
+  border-radius: 10px;
+}
+
+.criterion h4{
+  font-size: larger;
+  text-align: center;
+}
+
+.criterion ul li{
+  list-style: none;
+  background-color: white;
+  padding: .5em;
+  border-radius: 10px;
+  box-shadow: 0 5px 0 black;
+  margin-bottom: 1em;
+  border:2px solid black;
+  text-align: justify;
+}
+
+.criterion .listExercise ul .exerList .testings
+{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 10px;
-  background-color: #fff;
-  width: 100%;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.7);
 }
 
-.exer h1{
-  padding: 0.25em;
-}
-
-.exer .selection{
-  padding: 1em;
-  width: 100%;
-
-}
-
-.exer main{
-  padding: .5em;
-  width: 100%;
-  text-align: center;
-}
-
-.exer .selection select{
-  padding: 2px;
-  width: 100%;
-  height: 30px;
-  font-size: 15px;
-  color: #fff;
-  border-radius: 5px;
-  background: cornflowerblue;
-  text-align: center;
-  border:none;
-  margin-bottom: 10px;
-  font-weight: bold;
-  letter-spacing: .005em;
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
-}
-
-.exer .selection select option{
-  background-color: white;
-  color: cornflowerblue;
-  border: none;
-  outline: none;
-}
-
-.exer button{
-  padding: 0.5em;
-  width: 80%;
-  border-radius: 20px;
-  outline: none;
-  border:none;
-  background: orange;
-  color: whitesmoke;
-  font-weight: bolder;
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
-}
-
-.exer .listExercise button{
-  padding: 0.5em;
-  width: 7vw;
-  height: 4vh;
-  border-radius: 20px;
-  outline: none;
-  border:none;
-  background: orange;
-  color: whitesmoke;
-  font-weight: bolder;
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
-}
-
-.listExercise div{
-  display: flex;
-  flex-direction: row;
-  width: 70vw;
-}
-.listExercise p{
-  font-size: 15px;
-}
-.listExercise label{
-  font-size: 10px;
-}
-
-.listExercise div input{
-  width: 5vw;
-  height: 3vh;
-}
-
-.h-exer .exer .n-exer p{
-  margin-top: 10px;
-  height: 10px;
-  padding:0.5em;
-  font-size: 15px;
-}
-
-.h-exer ul{
-  list-style: none;
-  padding: 10px;
-}
-
-.h-exer ul li{
-  background-color: antiquewhite;
-  margin: 0.5em;
-  list-style: none;
-  padding: .25em;
-  font-weight:bolder;
-  letter-spacing: .07em;
-  height: 2em;
-  border-radius: 10px;
-}
-
-.h-exer ul p{
-  padding: .25em;
-  color: cornflowerblue;
-  font-weight:bolder;
+.criterion .listExercise ul .exerList .testings span{
+  align-items:center;
 }

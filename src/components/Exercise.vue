@@ -174,40 +174,48 @@ async function updateList(exercise, mins){
                 </option>
               </select>
             </div>
+            
 
-            <button @click="fetchExercise(urlApi)"> 
+            <button class="genbtn" @click="fetchExercise(urlApi)"> 
               Generate Exercise
             </button>
-              
-            <div v-if="exeList.length === 0" class="n-exer">
-              <h1>No Exercise</h1>
-              <h4>Select criteria to get started</h4>
-            </div>
 
-            <div v-else class="listExercise">
-              <ul>
-                <li v-for="exer in exeList" :value="exer.value" >
-                  <div>
-                    <div>
-                      <h4>{{ exer.name }}</h4> 
-                      <p>Instructions: {{ exer.instructions }}</p> 
-                      <p>{{ exer.calorie }} calorie per minute</p> 
-                    </div>
-                    <div>
-                      <input class="time" v-model="exer.time" type="number" placeholder=" " required>
-                      <!-- <input class="time" v-model="time" type="number" placeholder=" " required> -->
-                      <label for="time">minutes</label>
-                      <br>
-                      <p>{{ `${exer.calorie} * ${exer.time}` }} = {{ Math.ceil(exer.time * exer.calorie) }} estimated calories burned</p>
-                      <button @click="updateList(exer, exer.time)">Add Exercise</button>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-            </div>
-  
-          </main>
+            </main>
         </div>
+              
+            
+          
+      </div>
+    </div>
+  </div>
+  <div class="Spacer">
+    <div class="criterion">
+      <div v-if="exeList.length === 0" >
+        <h1>No Exercise</h1>
+        <h4>Select criteria to get started</h4>
+      </div>
+
+      <div v-else class="listExercise">
+        <ul>
+          <li class="exerList" v-for="exer in exeList" :value="exer.value" >
+            <div>
+            <h4>{{ exer.name }}</h4>
+            </div>
+              <div class="Instructions">
+                <p>Instructions: {{ exer.instructions }}</p> 
+                <p>{{ exer.calorie }} calorie per minute</p> 
+              </div>
+              <div class="testings">
+                <span><input class="time" v-model="exer.time" type="number" placeholder=" " required>
+                <!-- <input class="time" v-model="time" type="number" placeholder=" " required> -->
+                <label for="time">minutes</label>
+                </span>
+                <p>{{ `${exer.calorie} * ${exer.time}` }} = {{ Math.ceil(exer.time * exer.calorie) }} estimated calories burned</p>
+                
+              </div>
+              <button @click="updateList(exer, exer.time)">Add Exercise</button>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
